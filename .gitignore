@@ -10,7 +10,6 @@
 /public/images
 /public/fonts
 /public/plugins
-
 /vendor
 .env
 .phpunit.result.cache
