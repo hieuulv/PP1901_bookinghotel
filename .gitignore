@@ -4,6 +4,13 @@
 /storage/*.key
 
 .idea/
+
+/public/css
+/public/js
+/public/images
+/public/fonts
+/public/plugins
+
 /vendor
 .env
 .phpunit.result.cache
