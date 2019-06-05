@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,10 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
+        $posts = Post::all();
+        return view('index', compact('categories', 'posts'));
+    }
+
+    public function account()
+    {
         return view('home');
     }
+
     public function admin()
     {
-        return view('welcome');
+        return view('index');
     }
 }
