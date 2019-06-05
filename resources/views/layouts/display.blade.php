@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        <div class="phone">+45 345 3324 56789</div>
+                        <div class="phone">+0868 28 08 99</div>
                         <div class="social">
                             <ul class="social_list">
                                 <li class="social_list_item"><a href="#"><i class="fab fa-pinterest"
@@ -40,7 +40,7 @@
                                 <li class="social_list_item"><a href="#"><i class="fab fa-twitter"
                                                                             aria-hidden="true"></i></a></li>
                                 <li class="social_list_item"><a href="#"><i class="fab fa-instagram"
-                                                                            aria-hidden="true"></i></i></a></li>
+                                                                            aria-hidden="true"></i></a></li>
                                 <li class="social_list_item"><a href="#"><i class="fab fa-behance"
                                                                             aria-hidden="true"></i></a></li>
                                 <li class="social_list_item"><a href="#"><i class="fab fa-linkedin"
@@ -75,6 +75,18 @@
 
                                                 <div class="dropdown-menu dropdown-menu-right"
                                                      aria-labelledby="navbarDropdown">
+
+
+                                                    @if (Auth::check() && Auth::user()->role == "admin")
+                                                        <a class="dropdown-item" href="{{ route('admin') }}">
+                                                            {{ __('Dashboard') }}
+                                                        </a>
+                                                    @else
+                                                        <a class="dropdown-item" href="{{ route('profile') }}">
+                                                            {{ __('Your Profile') }}
+                                                        </a>
+                                                    @endif
+
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -98,7 +110,7 @@
                                     @endif
                                 @endauth
                             </div>
-                        @endif
+                            @endif</i></i></a></li>
                     </div>
                 </div>
             </div>

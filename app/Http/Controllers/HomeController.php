@@ -31,13 +31,12 @@ class HomeController extends Controller
         return view('index', compact('categories', 'posts'));
     }
 
-    public function account()
-    {
-        return view('home');
-    }
-
     public function admin()
     {
-        return view('index');
+        return view('admin.index');
+    }
+
+    public function profile(){
+        return view('member.profile');
     }
 }
