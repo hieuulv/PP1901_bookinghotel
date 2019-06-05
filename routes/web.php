@@ -11,14 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-Route::get('/admin', 'HomeController@admin')->middleware('CheckAdmin');
-
-Route::get('/account', 'HomeController@account')->name('account');
+//Check Admin
+Route::get('/admin', 'HomeController@admin')->middleware('CheckAdmin')->name('admin');
 
 Route::get('/', 'HomeController@index')->name('index');
 
+Route::get('/profile', 'HomeController@profile')->name('profile');
