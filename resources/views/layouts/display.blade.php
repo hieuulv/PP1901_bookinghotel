@@ -99,6 +99,7 @@
                                                     </form>
                                                 </div>
                                             </li>
+
                                         @endguest
                                     </ul>
                                 @else
@@ -110,7 +111,7 @@
                                     @endif
                                 @endauth
                             </div>
-                            @endif</i></i></a></li>
+                            @endif
                     </div>
                 </div>
             </div>
