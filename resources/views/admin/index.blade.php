@@ -23,11 +23,11 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>  {{ __('1') }}</td>
-                                    <td>  {{ __('Dakota Rice') }}</td>
-                                    <td>  {{ __('Niger') }}</td>
-                                    <td>  {{ __('Oud-Turnhout') }}</td>
-                                    <td class="text-primary"> {{ __('$36,738') }} </td>
+                                    <td>1</td>
+                                    <td>Dakota Rice</td>
+                                    <td>Niger</td>
+                                    <td>Oud-Turnhout</td>
+                                    <td class="text-primary">$36,738</td>
                                     <td>
                                         <a href="">{{ __('Edit') }}</a>
                                         <a href="">{{ __('Remote') }}</a>
