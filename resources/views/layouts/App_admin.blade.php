@@ -2,147 +2,159 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title> {{ __('Dashboard') }}</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-          name='viewport'/>
-    <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
-    <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet"/>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ __('Dashboard') }}</title>
+    <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('plugins/font-awesome-5.8.2/css/all.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
-<body class="">
-<div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="">
-        <div class="logo">
-            <a href="" class="simple-text logo-normal">
-                {{ __('Travelix') }}
+<body id="page-top">
+<div id="wrapper">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin')}}">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">{{__('Travelix')}}</div>
+        </a>
+
+        <hr class="sidebar-divider my-0">
+        <!-- --------------------------------------------------EndSidebar------------------------------------------------- -->
+
+        <li class="nav-item active">
+            <a class="nav-link" href="">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>{{__('Dashboard')}}</span>
             </a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            {{__('CATEGORIES')}}
         </div>
-        <div class="sidebar-wrapper">
-            <ul class="nav">
-                <li class="nav-item active ">
-                    <a class="nav-link" href="{{ route('index') }}">
-                        <i class="material-icons"> {{ __('unarchive') }}</i>
-                        <p> {{ __('Return Homepage') }}</p>
-                    </a>
-                </li>
 
-                <li class="nav-item  ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons"> {{ __('dashboard') }}</i>
-                        <p> {{ __('Dashboard') }}</p>
-                    </a>
-                </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('index_category') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>{{__('Categories')}}</span>
+            </a>
+        </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons"> {{ __('person') }}</i>
-                        <p> {{ __('User Profile') }}</p>
-                    </a>
-                </li>
+        <hr class="sidebar-divider d-none d-md-block">
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons"> {{ __('content_paste') }}</i>
-                        <p> {{ __('Table List') }}</p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons"> {{ __('library_books') }}</i>
-                        <p> {{ __('Typography') }}</p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons"> {{ __('bubble_chart') }}</i>
-                        <p> {{ __('Icons') }}</p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons"> {{ __('location_ons') }}</i>
-                        <p> {{ __('Maps') }}</p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons"> {{ __('notifications') }}</i>
-                        <p> {{ __('Notifications') }}</p>
-                    </a>
-                </li>
-
-
-            </ul>
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-    </div>
-    <div class="main-panel">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-            <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="">Dashboard</a>
-                </div>
-                <div class="collapse navbar-collapse justify-content-end">
-                    <form class="navbar-form">
-                        <div class="input-group no-border">
-                            <input type="text" value="" class="form-control" placeholder="Search...">
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i>
-                                <div class="ripple-container"></div>
+
+    </ul>
+    <!-- --------------------------------------------------EndSidebar------------------------------------------------- -->
+
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+
+            <!-- ----------------------------------------top bar---------------------------------------------------- -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
-                    </form>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pablo">
-                                <i class="material-icons">dashboard</i>
-                                <p class="d-lg-none d-md-block">Stats</p>
+                    </div>
+                </form>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                             aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small"
+                                           placeholder="Search for..." aria-label="Search"
+                                           aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <a href="{{ route('index') }}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                            <i class="fa fa-home fa-sm text-white-70"></i> {{__('Go Back Home')}}
+                        </a>
+                    </div>
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- ----------------------------------------profile---------------------------------------- -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                {{ Auth::user()->name }}
+                            </span>
+                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
                             </a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">person</i>
-                                <p class="d-lg-none d-md-block">Account</p>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                               data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                                    Log out
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    <!-- ----------------------------------------end profile---------------------------------------- -->
 
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- End Navbar -->
+                </ul>
+            </nav>
+            <!-- ----------------------------------------end top bar---------------------------------------------------- -->
 
+            <!-- ----------------------------------------------content---------------------------------------------- -->
         @yield('content')
+        <!-- ----------------------------------------------end content---------------------------------------------- -->
 
+        </div>
     </div>
 </div>
 
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<!-- Bootstrap core JavaScript-->
+<
 <script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/popper.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap-material-design.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
 </body>
 </html>
+
