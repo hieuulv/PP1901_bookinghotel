@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -45,8 +44,7 @@ class CategoryController extends Controller
         $categories = Category::find($id);
         if (empty($categories)) {
             return redirect('admin/category');
-        }
-        else{
+        } else {
             $categories->name = $request->get('name');
             $categories->save();
         }
@@ -59,7 +57,7 @@ class CategoryController extends Controller
         if (empty($categories)) {
             abort(404);
         }
-        return redirect('admin/category');
+        return view('admin.category.edit', compact('categories'));
     }
 
 }
