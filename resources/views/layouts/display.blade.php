@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        <div class="phone">+0868 28 08 99</div>
+                        {{--<div class="phone">{!! $setting->id !!}</div>--}}
                         <div class="social">
                             <ul class="social_list">
                                 <li class="social_list_item"><a href="#"><i class="fab fa-pinterest"
