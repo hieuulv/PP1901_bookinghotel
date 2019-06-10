@@ -1,44 +1,30 @@
 @extends('layouts.App_admin')
 
 @section('content')
-    <div class="content">
-        <div class="container-fluid">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title "> {{ __('Demo1') }}
-                        </h4>
-                        <p class="card-category"> {{ __('Demo2') }} </p>
-                    </div>
+    <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">{{__('Dashboard')}}</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                <th>  {{ __('ID') }}</th>
-                                <th>  {{ __('Name') }}</th>
-                                <th>  {{ __('Country') }}</th>
-                                <th>  {{ __('City') }}</th>
-                                <th>  {{ __('Salary') }}</th>
-                                <th>  {{ __('Add') }}</th>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                    <td class="text-primary">$36,738</td>
-                                    <td>
-                                        <a href="">{{ __('Edit') }}</a>
-                                        <a href="">{{ __('Remote') }}</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
     </div>
 @endsection
