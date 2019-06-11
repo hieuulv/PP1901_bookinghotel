@@ -33,3 +33,4 @@ Route::post('admin/category/update/{id}', 'CategoryController@edit')->name('edit
 
 // Remove Category
 Route::get('admin/category/remove/{id}', 'CategoryController@remove')->name('remove_category');
+

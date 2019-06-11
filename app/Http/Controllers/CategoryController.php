@@ -64,6 +64,6 @@ class CategoryController extends Controller
             abort(404);
         }
 
-        return redirect('admin/category');
+        return view('admin.category.edit', compact('categories'));
     }
 }
