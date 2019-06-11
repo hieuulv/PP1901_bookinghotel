@@ -28,8 +28,8 @@ Route::get('admin/category/create', 'CategoryController@create')->name('create_c
 Route::post('admin/category/create', 'CategoryController@add')->name('add_category');
 
 // Edit Category
-Route::get('admin/category/update{id}', 'CategoryController@update')->name('update_category');
-Route::post('admin/category/update{id}', 'CategoryController@edit')->name('edit_category');
+Route::get('admin/category/update/{id}', 'CategoryController@update')->name('update_category');
+Route::post('admin/category/update/{id}', 'CategoryController@edit')->name('edit_category');
 
 // Remove Category
-Route::get('admin/category/remove{id}', 'CategoryController@remove')->name('remove_category');
+Route::get('admin/category/remove/{id}', 'CategoryController@remove')->name('remove_category');

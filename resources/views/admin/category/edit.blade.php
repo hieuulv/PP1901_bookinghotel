@@ -21,6 +21,9 @@
                                 <label for="name">{{__('Name Categories')}}</label>
                                 <input type="text" value="{!! $categories->name !!}" name="name" class="form-control">
                             </div>
+                            @if($errors->first('name'))
+                                <p class="alert alert-danger">{{ $errors->first('name') }}</p>
+                            @endif
                             <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
                                 {{__('Update Categories')}}
                             </button>

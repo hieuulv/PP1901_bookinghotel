@@ -21,7 +21,7 @@
                                 <label for="name">{{__('Name Categories')}}</label>
                                 <input type="text" name="name" class="form-control">
                             </div>
-                            <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
+                                <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
                                 {{__('Create Categories')}}
                             </button>
                         </form>

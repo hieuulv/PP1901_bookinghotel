@@ -6,7 +6,11 @@
             <h1 class="h3 mb-0 text-gray-800"> {{__('Categories')}}</h1>
         </div>
 
-        <!-- DataTales Example -->
+        @if(session('status'))
+            <p class="alert alert-success">{{ session('status') }}</p>
+        @endif
+
+    <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary"> {{__('Table Categories')}}</h6>
@@ -36,10 +40,12 @@
                                 <td>{!! $cate->created_at !!}</td>
                                 <td>{!! $cate->updated_at !!}</td>
                                 <td>
-                                    <a href="{{ route('update_category', $cate->id) }}" class="btn btn-info btn-circle btn-sm">
+                                    <a href="{{ route('update_category', $cate->id) }}"
+                                       class="btn btn-info btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('remove_category', $cate->id ) }}" class="btn btn-danger btn-circle btn-sm">
+                                    <a href="{{ route('remove_category', $cate->id ) }}"
+                                       class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
