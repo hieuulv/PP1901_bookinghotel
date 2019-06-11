@@ -18,6 +18,7 @@ class CategoryController extends Controller
     //ADD CATEGORIES
     public function create()
     {
+
         return view('admin.category.add');
     }
 
