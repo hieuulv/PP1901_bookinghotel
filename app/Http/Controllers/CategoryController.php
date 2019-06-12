@@ -11,12 +11,14 @@ class CategoryController extends Controller
     public function index_category()
     {
         $categories = Category::all();
+
         return view('admin.category.index_category', compact('categories'));
     }
 
     //ADD CATEGORIES
     public function create()
     {
+
         return view('admin.category.add');
     }
 
@@ -25,6 +27,7 @@ class CategoryController extends Controller
         $categories = new Category();
         $categories->name = $request->get('name');
         $categories->save();
+
         return view('admin.category.add', compact('categories'));
     }
 
@@ -34,8 +37,10 @@ class CategoryController extends Controller
     {
         $categories = Category::find($id);
         if (empty($categories)) {
+
             return redirect('admin/category');
         }
+
         return view('admin.category.edit', compact('categories'));
     }
 
@@ -48,6 +53,7 @@ class CategoryController extends Controller
             $categories->name = $request->get('name');
             $categories->save();
         }
+
         return view('admin.category.edit', compact('categories'));
     }
 
@@ -57,7 +63,7 @@ class CategoryController extends Controller
         if (empty($categories)) {
             abort(404);
         }
+
         return view('admin.category.edit', compact('categories'));
     }
-
 }

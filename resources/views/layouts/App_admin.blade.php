@@ -98,7 +98,8 @@
                         </div>
                     </li>
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <a href="{{ route('index') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                        <a href="{{ route('index') }}" target="_blank"
+                           class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
                             <i class="fa fa-home fa-sm text-white-70"></i> {{__('Go Back Home')}}
                         </a>
                     </div>
@@ -156,4 +157,3 @@
 
 </body>
 </html>
-
