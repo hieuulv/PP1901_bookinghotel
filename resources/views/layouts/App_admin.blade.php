@@ -36,13 +36,13 @@
         <hr class="sidebar-divider">
 
         <div class="sidebar-heading">
-            {{__('CATEGORIES')}}
+            {{ __('CATEGORIES') }}
         </div>
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('index_category') }}">
                 <i class="fas fa-fw fa-table"></i>
-                <span>{{__('Categories')}}</span>
+                <span>{{ __('Categories') }}</span>
             </a>
         </li>
 
@@ -100,7 +100,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between">
                         <a href="{{ route('index') }}" target="_blank"
                            class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                            <i class="fa fa-home fa-sm text-white-70"></i> {{__('Go Back Home')}}
+                            <i class="fa fa-home fa-sm text-white-70"></i> {{ __('Go Back Home') }}
                         </a>
                     </div>
 
