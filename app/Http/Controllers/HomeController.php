@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
-
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -29,18 +28,13 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $posts = Post::all();
-        $setting = Setting::all();
-        return view('index', compact('categories', 'posts', 'setting'));
+        $settings = Setting::all()->toArray();
+        return view('index', compact('categories', 'posts', 'settings'));
     }
 
     public function admin()
     {
         return view('admin.index');
-    }
-
-    public function profile()
-    {
-        return view('member.profile');
     }
 
 }
