@@ -25,6 +25,7 @@ Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 // Route index Category Admin
 Route::get('admin/category', 'CategoryController@index_category')->name('index_category');
 
+//----------------------------------------------------------------------------------------------
 // Add Category
 Route::get('admin/category/create', 'CategoryController@create')->name('create_category');
 Route::post('admin/category/create', 'CategoryController@add')->name('add_category');
@@ -35,11 +36,22 @@ Route::post('admin/category/update/{id}', 'CategoryController@edit')->name('edit
 
 // Remove Category
 Route::get('admin/category/remove/{id}', 'CategoryController@remove')->name('remove_category');
+//----------------------------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------------------------
 // Route index Comment Admin
 Route::get('admin/comment', 'CommentController@index_comment')->name('index_comment');
 
 // Remove Comment
 Route::get('admin/comment/remove/{id}', 'CommentController@remove')->name('remove_comment');
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+// Route index Setting Admin
+Route::get('admin/setting', 'SettingController@index_setting')->name('index_setting');
+
+// Route edit Setting Admin
+Route::get('admin/setting/edit/{id}', 'SettingController@update')->name('update_setting');
+Route::post('admin/setting/edit/{id}', 'SettingController@edit')->name('edit_setting');
 
 //--------------------------------------------------------------end xu ly admin--------------------------------------------------------------

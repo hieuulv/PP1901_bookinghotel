@@ -35,6 +35,7 @@
 
         <hr class="sidebar-divider">
 
+        {{-----------------category-----------------}}
         <div class="sidebar-heading">
             {{ __('CATEGORIES') }}
         </div>
@@ -47,7 +48,9 @@
         </li>
 
         <hr class="sidebar-divider d-none d-md-block">
+        {{-----------------end category-----------------}}
 
+        {{-----------------commnet-----------------}}
         <div class="sidebar-heading">
             {{ __('Comment') }}
         </div>
@@ -60,6 +63,22 @@
         </li>
 
         <hr class="sidebar-divider d-none d-md-block">
+        {{-----------------end comment-----------------}}
+
+        {{-----------------Setting-----------------}}
+        <div class="sidebar-heading">
+            {{ __('Setting') }}
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('index_setting') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>{{ __('Setting') }}</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+        {{-----------------end seting-----------------}}
 
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
