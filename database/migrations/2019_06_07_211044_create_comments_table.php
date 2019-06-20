@@ -17,6 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->text('content')->nullable();
             $table->string('user_id');
+            $table->string('room_id');
             $table->timestamps();
         });
     }

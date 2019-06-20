@@ -312,8 +312,7 @@
                                         <div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div>
                                     </div>
                                     <div class="contact_info_text">
-                                        {{--{{ $settings[0]['address'] }}--}}
-                                        meex tr
+                                        {{ $settings[0]['address'] }}
                                     </div>
                                 </li>
                                 <li class="contact_info_item d-flex flex-row">
