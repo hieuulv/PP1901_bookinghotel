@@ -30,7 +30,7 @@
 
             <div class="col-md-7 personal-info">
 
-                <form class="form-horizontal" method="post" action="{{ route('edit_profile', $users->id) }}">
+                <form class="form-horizontal" method="post" action="">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">{{ __('Họ và tên:') }}</label>
                         <div class="col-lg-10">
@@ -41,29 +41,27 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">{{ __('Số điện thoại:') }}</label>
                         <div class="col-lg-10">
-                            <input class="form-control" type="text" value="{{ __('016177111') }}">
+                            <input class="form-control" type="text" value="{{ $users->phone }}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">{{ __('Email:') }}</label>
                         <div class="col-lg-10">
-                            <input class="form-control" type="text" value="{{ __('janesemail@gmail.com') }}">
+                            <input class="form-control" type="text" value="{{ $users->email }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">{{ __('Địa chỉ::') }}</label>
+                        <label class="col-lg-3 control-label">{{ __('Địa chỉ:') }}</label>
                         <div class="col-lg-10">
-                            <input class="form-control" type="text" value="{{ __('Ha Noi') }}">
+                            <input class="form-control" type="text" value="{{ $users->address }}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-10">
-                            <input type="button" class="btn btn-primary" value="{{ __('Save Changes') }}">
-                            <span></span>
-                            <input type="reset" class="btn btn-default" value=""{{ __('Cancel') }}>
+                            <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                         </div>
                     </div>
                 </form>

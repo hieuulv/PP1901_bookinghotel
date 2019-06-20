@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        {{--<div class="phone">{!! $setting->id !!}</div>--}}
+                        <div class="phone">{{ $settings[0]['phone'] }}</div>
                         <div class="social">
                             <ul class="social_list">
                                 <li class="social_list_item"><a href="#"><i class="fab fa-pinterest"
@@ -82,7 +82,8 @@
                                                             {{ __('Dashboard') }}
                                                         </a>
                                                     @else
-                                                        <a class="dropdown-item" href="{{ route('profile') }}">
+                                                        <a class="dropdown-item"
+                                                           href="{{ route('profile', Auth::user()->id) }}">
                                                             {{ __('Your Profile') }}
                                                         </a>
                                                     @endif
@@ -124,7 +125,12 @@
                 <div class="row">
                     <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container">
-                            <div class="logo"><a href="#"><img src="images/logo.png" alt="">travelix</a></div>
+                            <div class="logo">
+                                <a href="#">
+                                    <img src="images/logo.png" alt="">
+                                    {{ $settings[0]['logo'] }}
+                                </a>
+                            </div>
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
@@ -195,7 +201,7 @@
         <div id="google_map" class="google_map">
             <div class="map_container">
                 <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.474023213184!2d105.77933501442689!3d21.01371098600651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345355581991a3%3A0x4d386a840c43d305!2zNTkgTeG7hSBUcsOsIEjhuqEsIE3hu4UgVHLDrCwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1559071892893!5m2!1svi!2s"
+                    <iframe src="{{ $settings[0]['map'] }}"
                             width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
@@ -212,7 +218,11 @@
                     <div class="footer_col">
                         <div class="footer_content footer_about">
                             <div class="logo_container footer_logo">
-                                <div class="logo"><a href="#"><img src="images/logo.png" alt="">travelix</a></div>
+                                <div class="logo">
+                                    <a href="#"><img src="images/logo.png" alt="">
+                                        {{ $settings[0]['logo'] }}
+                                    </a>
+                                </div>
                             </div>
                             <p class="footer_about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 Vivamus quis vu lputate eros, iaculis consequat nisl. Nunc et suscipit urna. Integer
@@ -301,20 +311,29 @@
                                     <div>
                                         <div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div>
                                     </div>
-                                    <div class="contact_info_text">59 Mễ Trì Hạ</div>
+                                    <div class="contact_info_text">
+                                        {{--{{ $settings[0]['address'] }}--}}
+                                        meex tr
+                                    </div>
                                 </li>
                                 <li class="contact_info_item d-flex flex-row">
                                     <div>
                                         <div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div>
                                     </div>
-                                    <div class="contact_info_text">868 28 08 99</div>
+                                    <div class="contact_info_text">
+                                        {{ $settings[0]['phone'] }}
+                                    </div>
                                 </li>
                                 <li class="contact_info_item d-flex flex-row">
                                     <div>
                                         <div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
                                     </div>
-                                    <div class="contact_info_text"><a href="mailto:hieuu.dev99@gmail.com?Subject=Hello"
-                                                                      target="_top">hieuu.dev99@gmail.com</a></div>
+                                    <div class="contact_info_text">
+                                        <a href="mailto:hieuu.dev99@gmail.com?Subject=Hello"
+                                           target="_top">
+                                            {{ $settings[0]['email'] }}
+                                        </a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

@@ -18,7 +18,7 @@ Route::get('/admin', 'HomeController@admin')->middleware('CheckAdmin')->name('ad
 
 Route::get('/', 'HomeController@index')->name('index');
 
-Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
 // Route index Category
 Route::get('admin/category', 'CategoryController@index_category')->name('index_category');
