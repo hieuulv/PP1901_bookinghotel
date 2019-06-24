@@ -28,7 +28,9 @@ class CategoryController extends Controller
         $categories->name = $request->get('name');
         $categories->save();
 
-        return view('admin.category.add', compact('categories'));
+
+        return redirect()->route('index_category', compact('categories'));
+//        return view('admin.category.add', compact('categories'));
     }
 
 
@@ -54,7 +56,7 @@ class CategoryController extends Controller
             $categories->save();
         }
 
-        return view('admin.category.edit', compact('categories'));
+        return redirect()->route('index_category', compact('categories'));
     }
 
     public function remove($id)
@@ -64,6 +66,6 @@ class CategoryController extends Controller
             abort(404);
         }
 
-        return view('admin.category.edit', compact('categories'));
+        return redirect()->route('index_category', compact('categories'));
     }
 }

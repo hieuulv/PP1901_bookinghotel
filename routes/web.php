@@ -20,7 +20,9 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
-// Route index Category
+//--------------------------------------------------------------xu ly admin--------------------------------------------------------------
+
+// Route index Category Admin
 Route::get('admin/category', 'CategoryController@index_category')->name('index_category');
 
 // Add Category
@@ -34,3 +36,10 @@ Route::post('admin/category/update/{id}', 'CategoryController@edit')->name('edit
 // Remove Category
 Route::get('admin/category/remove/{id}', 'CategoryController@remove')->name('remove_category');
 
+// Route index Comment Admin
+Route::get('admin/comment', 'CommentController@index_comment')->name('index_comment');
+
+// Remove Comment
+Route::get('admin/comment/remove/{id}', 'CommentController@remove')->name('remove_comment');
+
+//--------------------------------------------------------------end xu ly admin--------------------------------------------------------------
