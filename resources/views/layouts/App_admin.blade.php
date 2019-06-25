@@ -11,6 +11,7 @@
     <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('plugins/font-awesome-5.8.2/css/all.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>
 </head>
 
 <body id="page-top">
@@ -57,13 +58,28 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('index_comment') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw  fa-comments"></i>
                 <span>{{ __('Comment') }}</span>
             </a>
         </li>
 
         <hr class="sidebar-divider d-none d-md-block">
         {{-----------------end comment-----------------}}
+
+        {{-----------------user-----------------}}
+        <div class="sidebar-heading">
+            {{ __('Users') }}
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('index_user') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>{{ __('Users') }}</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+        {{-----------------end user-----------------}}
 
         {{-----------------Setting-----------------}}
         <div class="sidebar-heading">
@@ -72,7 +88,7 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('index_setting') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw fa-cogs"></i>
                 <span>{{ __('Setting') }}</span>
             </a>
         </li>
@@ -186,6 +202,26 @@
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+<script>
+    // show image
+    $(document).ready(function () {
 
+        var readURL = function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
+
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
+    });
+</script>
 </body>
 </html>

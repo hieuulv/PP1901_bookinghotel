@@ -30,7 +30,6 @@ class CategoryController extends Controller
 
 
         return redirect()->route('index_category', compact('categories'));
-//        return view('admin.category.add', compact('categories'));
     }
 
 

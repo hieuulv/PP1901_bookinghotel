@@ -53,5 +53,18 @@ Route::get('admin/setting', 'SettingController@index_setting')->name('index_sett
 // Route edit Setting Admin
 Route::get('admin/setting/edit/{id}', 'SettingController@update')->name('update_setting');
 Route::post('admin/setting/edit/{id}', 'SettingController@edit')->name('edit_setting');
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+// Route index Comment Admin
+Route::get('admin/user', 'UserController@index_user')->name('index_user');
+
+//Route add user
+Route::get('admin/user/add', 'UserController@create')->name('create_user');
+
+//Route edit user
+Route::get('admin/user/edit/{id}', 'UserController@update')->name('update_user');
+
+//----------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------end xu ly admin--------------------------------------------------------------
