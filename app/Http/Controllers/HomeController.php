@@ -29,7 +29,16 @@ class HomeController extends Controller
         $categories = Category::all();
         $posts = Post::all();
         $settings = Setting::all()->toArray();
-        return view('index', compact('categories', 'posts', 'settings'));
+        $homepage = 'home';
+        return view('index', compact('categories', 'posts', 'settings', 'homepage'));
+    }
+
+    public function contact()
+    {
+        $categories = Category::all();
+        $posts = Post::all();
+        $settings = Setting::all()->toArray();
+        return view('contact', compact('categories', 'posts', 'settings'));
     }
 
     public function admin()
