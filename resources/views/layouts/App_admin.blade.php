@@ -8,10 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>{{ __('Dashboard') }}</title>
-    <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('plugins/font-awesome-5.8.2/css/all.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>
+    @include('layouts.admin.top_asset')
 </head>
 
 <body id="page-top">
@@ -199,29 +196,6 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-<script>
-    // show image
-    $(document).ready(function () {
-
-        var readURL = function (input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('.avatar').attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        };
-
-        $(".file-upload").on('change', function () {
-            readURL(this);
-        });
-    });
-</script>
+@include('layouts.admin.bottom_asset')
 </body>
 </html>
