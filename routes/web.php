@@ -22,6 +22,9 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
+
+
+
 //--------------------------------------------------------------ADMIN--------------------------------------------------------------
 
 // Route index Category Admin

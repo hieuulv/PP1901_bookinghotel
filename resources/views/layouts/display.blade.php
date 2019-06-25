@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Travelix Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Header -->
+    <!-- Link -->
     @include('layouts.display.top_asset')
-    <!-- Enf Header -->
+    <!-- End Link -->
 </head>
 
 <body>
@@ -16,14 +16,18 @@
 <div class="super_container">
 
     <!-- Header -->
-        @include('layouts.display.header')
-    <!-- Enf Header -->
+    @include('layouts.display.header')
+    <!-- End Header -->
+
+    <!-- Header -->
+    @include('layouts.display.nav_mobie')
+    <!-- End Header -->
 
     <!-- Slide -->
-    @if(isset($homepage) && $homepage == 'contact')
+    @if(isset($homepage) && $homepage == 'index')
         @include('layouts.display.slide')
     @endif
-    <!-- Enf Slide -->
+    <!-- End Slide -->
 
     <!-- Content -->
     @yield('content')
@@ -43,7 +47,9 @@
 
 </div>
 
+    <!-- Link -->
     @include('layouts.display.bottom_asset')
+    <!-- End Link -->
 
 </body>
 </html>

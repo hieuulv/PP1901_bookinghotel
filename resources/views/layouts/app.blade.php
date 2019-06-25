@@ -20,6 +20,9 @@
             width: 210px;
             height: 210px;
         }
+        body {
+            background-color: blue ;
+        }
     </style>
 </head>
 <body>
