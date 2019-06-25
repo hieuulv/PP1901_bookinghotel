@@ -24,10 +24,16 @@
                         <form action="#" id="contact_form" class="contact_form text-center">
 
                             <input type="text" id="contact_form_name" class="contact_form_name input_field"
-                                   placeholder="Name" required="required" data-error="Name is required.">
+                                   placeholder="Name" required="required">
 
                             <input type="text" id="contact_form_email" class="contact_form_email input_field"
-                                   placeholder="E-mail" required="required" data-error="Email is required.">
+                                   placeholder="E-mail" required="required" >
+
+                            <input type="text" id="contact_form_subject" class="contact_form_name input_field"
+                                   placeholder="Phone" required="required" style="margin-top: 11px;">
+
+                            <input type="text" id="contact_form_subject" class="contact_form_email input_field"
+                                   placeholder="Address" required="required" style="margin-top: 11px;">
 
                             <textarea id="contact_form_message" class="text_field contact_form_message" name="message"
                                       rows="4" placeholder="Message" required="required"

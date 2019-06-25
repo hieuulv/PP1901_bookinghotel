@@ -69,7 +69,14 @@ Route::get('admin/user/add', 'UserController@create')->name('create_user');
 
 //Route edit user
 Route::get('admin/user/edit/{id}', 'UserController@update')->name('update_user');
+//----------------------------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------------------------
+// Route Contact Admin
+Route::get('admin/contact', 'ContactController@index_contact')->name('index_contact');
+
+// Remove Contact
+Route::get('admin/contact/remove/{id}', 'ContactController@remove')->name('remove_contact');
 //----------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------END ADMIN--------------------------------------------------------------
