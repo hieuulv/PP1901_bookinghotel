@@ -18,9 +18,11 @@ Route::get('/admin', 'HomeController@admin')->middleware('CheckAdmin')->name('ad
 
 Route::get('/', 'HomeController@index')->name('index');
 
+Route::get('/contact', 'HomeController@contact')->name('contact');
+
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
-//--------------------------------------------------------------xu ly admin--------------------------------------------------------------
+//--------------------------------------------------------------ADMIN--------------------------------------------------------------
 
 // Route index Category Admin
 Route::get('admin/category', 'CategoryController@index_category')->name('index_category');
@@ -67,4 +69,4 @@ Route::get('admin/user/edit/{id}', 'UserController@update')->name('update_user')
 
 //----------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------end xu ly admin--------------------------------------------------------------
+//--------------------------------------------------------------END ADMIN--------------------------------------------------------------
