@@ -43,47 +43,59 @@
                                         @endif
                                     @else
                                         <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+
+                                            <a id="navbarDropdown" style="color: #FFFFFF"
+                                               class="nav-link dropdown-toggle" href="#"
                                                role="button" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }} <span class=""></span>
                                             </a>
 
-                                            <div class="dropdown-menu dropdown-menu-right"
-                                                 aria-labelledby="navbarDropdown">
-
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                                 aria-labelledby="userDropdown">
 
                                                 @if (Auth::check() && Auth::user()->role == "admin")
                                                     <a class="dropdown-item" href="{{ route('admin') }}">
+                                                        <i class="fas fa-user-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                                                         {{ __('Dashboard') }}
                                                     </a>
                                                 @else
                                                     <a class="dropdown-item"
                                                        href="{{ route('profile', Auth::user()->id) }}">
+                                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                                         {{ __('Your Profile') }}
                                                     </a>
                                                 @endif
 
+                                                <div class="dropdown-divider"></div>
+
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                                     document.getElementById('logout-form').submit();"
+                                                   data-toggle="modal" data-target="#logoutModal">
+                                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                    Logout
                                                 </a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                       style="display: none;">
                                                     @csrf
                                                 </form>
+
                                             </div>
                                         </li>
 
                                     @endguest
                                 </ul>
                             @else
-                                <div class="user_box_login user_box_link"><a href="{{ route('login') }}">login <i
-                                                class="fas fa-sign-in-alt"></i></a></div>
+                                <div class="user_box_login user_box_link">
+                                    <a href="{{ route('login') }}">{{ __('login') }}
+                                        <i class="fas fa-sign-in-alt"></i>
+                                    </a>
+                                </div>
                                 @if (Route::has('register'))
-                                    <div class="user_box_register user_box_link"><a href="{{ route('register') }}">register</a>
+                                    <div class="user_box_register user_box_link">
+                                        <a href="{{ route('register') }}">{{ __('register') }}</a>
                                     </div>
                                 @endif
                             @endauth
@@ -102,7 +114,7 @@
                 <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                     <div class="logo_container">
                         <div class="logo">
-                            <a href="#">
+                            <a href="{{ route('index') }}">
                                 <img src="images/logo.png" alt="">
                                 {{ $settings[0]['logo'] }}
                             </a>
@@ -110,13 +122,44 @@
                     </div>
                     <div class="main_nav_container ml-auto">
                         <ul class="main_nav_list">
-                            @foreach($categories as $category)
+
+                            <li class="main_nav_item">
+                                <a href="{{ route('index') }}">
+                                    {{ __('home') }}
+                                </a>
+                            </li>
+
+                            <li class="main_nav_item">
+                                <a href="#">
+                                    {{ __('about us') }}
+                                </a>
+                            </li>
+
+                            <li class="main_nav_item">
+                                <a href="#">
+                                    {{ __('rooms') }}
+                                </a>
+                            </li>
+
+                            <li class="main_nav_item">
+                                <a href="#">
+                                    {{ __('news') }}
+                                </a>
+                            </li>
+
+                            <li class="main_nav_item">
+                                <a href="{{ route('contact') }}">
+                                    {{ __('contact') }}
+                                </a>
+                            </li>
+
+                            @if (Auth::check() && Auth::user()->role == "member")
                                 <li class="main_nav_item">
-                                    <a href="#">
-                                        {!! $category->name !!}
+                                    <a href="">
+                                        {{ __('my room') }}
                                     </a>
                                 </li>
-                            @endforeach
+                            @endif
                         </ul>
                     </div>
                     <div class="content_search ml-lg-0 ml-auto">
@@ -158,19 +201,3 @@
     </nav>
 
 </header>
-
-<div class="menu trans_500">
-    <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-        <div class="menu_close_container">
-            <div class="menu_close"></div>
-        </div>
-        <div class="logo menu_logo"><a href="{{ route('index') }}"><img src="images/logo.png" alt=""></a></div>
-        <ul>
-            <li class="menu_item"><a href="#">home</a></li>
-            <li class="menu_item"><a href="about.html">about us</a></li>
-            <li class="menu_item"><a href="offers.html">offers</a></li>
-            <li class="menu_item"><a href="blog.html">news</a></li>
-            <li class="menu_item"><a href="contact.html">contact</a></li>
-        </ul>
-    </div>
-</div>

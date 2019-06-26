@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -26,16 +27,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
+        $comments = Comment::paginate(5);
         $posts = Post::all();
         $settings = Setting::all()->toArray();
-        $homepage = 'home';
-        return view('index', compact('categories', 'posts', 'settings', 'homepage'));
+        $homepage = 'index';
+        return view('index', compact('categories', 'posts', 'settings', 'comments', 'homepage'));
     }
 
     public function contact()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         $posts = Post::all();
         $settings = Setting::all()->toArray();
         return view('contact', compact('categories', 'posts', 'settings'));

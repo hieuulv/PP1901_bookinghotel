@@ -8,13 +8,13 @@
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block">
-                                <img src="http://blog.1tour.vn/wp-content/uploads/2016/02/Khach-san-Majestic-Sai-Gon.jpg"
-                                     alt="" style="width: 100%">
+                                <img src="{{ asset('images/login1.jpeg') }}"
+                                     alt="" style="width: 100%; height: 100%">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Wellcome to Travelix !</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">{{ __('Wellcome to Travelix !') }}</h1>
                                     </div>
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
@@ -68,7 +68,8 @@
                                         @endif
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register') }}">Tạo một tài khoản mới!</a>
+                                        <a class="small"
+                                           href="{{ route('register') }}">{{ __('Tạo một tài khoản mới!') }}</a>
                                     </div>
                                 </div>
                             </div>

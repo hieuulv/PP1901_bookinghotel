@@ -287,32 +287,16 @@
                     <div class="cta_slider_container">
                         <div class="owl-carousel owl-theme cta_slider">
 
-                            <!-- CTA Slider Item -->
-                            <div class="owl-item cta_item text-center" style="width: 1110px; height: 383px; ">
-                                <div class="cta_title">a@gmail.com</div>
-                                <p class="cta_text"> Phòng đẹp đầy đủ tiện nghi và sang trọng.</p>
-                                <div class="button cta_button">
-                                    <div class="button_bcg"></div>
-                                    <a href="#">Xem đánh giá<span></span><span></span><span></span></a></div>
-                            </div>
-
-                            <!-- CTA Slider Item -->
-                            <div class="owl-item cta_item text-center" style="width: 1110px; height: 383px; ">
-                                <div class="cta_title">a@gmail.com</div>
-                                <p class="cta_text"> Phòng đẹp đầy đủ tiện nghi và sang trọng.</p>
-                                <div class="button cta_button">
-                                    <div class="button_bcg"></div>
-                                    <a href="#">Xem đánh giá<span></span><span></span><span></span></a></div>
-                            </div>
-
-                            <!-- CTA Slider Item -->
-                            <div class="owl-item cta_item text-center" style="width: 1110px; height: 383px; ">
-                                <div class="cta_title">a@gmail.com</div>
-                                <p class="cta_text"> Phòng đẹp đầy đủ tiện nghi và sang trọng.</p>
-                                <div class="button cta_button">
-                                    <div class="button_bcg"></div>
-                                    <a href="#">Xem đánh giá<span></span><span></span><span></span></a></div>
-                            </div>
+                            @foreach($comments as $comment)
+                                <div class="owl-item cta_item text-center" style="width: 1110px; height: 383px; ">
+                                    <div class="cta_title">{!! $comment['user']['email'] !!}</div>
+                                    <p class="cta_text"> {!! $comment->content !!} </p>
+                                    <div class="button cta_button">
+                                        <div class="button_bcg"></div>
+                                        <a href="#">Xem đánh giá<span></span><span></span><span></span></a>
+                                    </div>
+                                </div>
+                            @endforeach
 
                         </div>
 
@@ -370,7 +354,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <h2 class="section_title">Phòng được lựa chọn nhiều nhất</h2>
+                    <h2 class="section_title">{{ __('Phòng được lựa chọn nhiều nhất') }}</h2>
                 </div>
             </div>
             <div class="row trending_container">
