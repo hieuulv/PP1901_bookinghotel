@@ -18,6 +18,9 @@ Route::get('/admin', 'HomeController@admin')->middleware('CheckAdmin')->name('ad
 
 Route::get('/', 'HomeController@index')->name('index');
 
+Route::get('/rooms', 'HomeController@rooms')->name('rooms');
+Route::get('/detail', 'HomeController@detail_rooms')->name('detail');
+
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');

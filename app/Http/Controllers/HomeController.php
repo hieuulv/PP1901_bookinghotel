@@ -27,20 +27,33 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(5);
         $comments = Comment::paginate(5);
         $posts = Post::all();
         $settings = Setting::all()->toArray();
         $homepage = 'index';
-        return view('index', compact('categories', 'posts', 'settings', 'comments', 'homepage'));
+        return view('index', compact('posts', 'settings', 'comments', 'homepage'));
+    }
+
+    public function rooms()
+    {
+        $posts = Post::all();
+        $settings = Setting::all()->toArray();
+        return view('rooms', compact( 'posts', 'settings'));
+    }
+
+    public function detail_rooms()
+    {
+        $posts = Post::all();
+        $settings = Setting::all()->toArray();
+        return view('detail', compact( 'posts', 'settings'));
     }
 
     public function contact()
     {
-        $categories = Category::paginate(5);
         $posts = Post::all();
         $settings = Setting::all()->toArray();
-        return view('contact', compact('categories', 'posts', 'settings'));
+        $contact_page = 'contact';
+        return view('contact', compact( 'posts', 'settings', 'contact_page'));
     }
 
     public function admin()
