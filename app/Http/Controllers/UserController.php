@@ -33,13 +33,15 @@ class UserController extends Controller
         $users->role = $request->get('role');
         $users->password = Hash::make($request->get('password'));
         //upload_image
-        $images_File = $request->file('images');
-        $FileName = time() . '.' . $images_File->extension();
-        $images_File->move('upload_image/', $FileName);
-        $users->images = $FileName;
+        if ($request->file('images')) {
+            $images_File = $request->file('images');
+            $FileName = time() . '.' . $images_File->extension();
+            $images_File->move('upload_image/', $FileName);
+            $users->images = $FileName;
+        }
+        $users->images = "blog_2.jpg";
         $users->save();
 
-//        return view('admin.user.add', compact('users'));
         return redirect()->route('index_user', compact('users'));
     }
 
@@ -67,10 +69,12 @@ class UserController extends Controller
             $users->role = $request->get('role');
             $users->password = Hash::make($request->get('password'));
             //upload_image
-            $images_File = $request->file('images');
-            $FileName = time() . '.' . $images_File->extension();
-            $images_File->move('upload_image/', $FileName);
-            $users->images = $FileName;
+            if ($request->file('images')) {
+                $images_File = $request->file('images');
+                $FileName = time() . '.' . $images_File->extension();
+                $images_File->move('upload_image/', $FileName);
+                $users->images = $FileName;
+            }
             $users->save();
         }
 

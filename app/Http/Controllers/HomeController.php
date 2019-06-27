@@ -48,12 +48,18 @@ class HomeController extends Controller
         return view('detail', compact( 'posts', 'settings'));
     }
 
+    public function post()
+    {
+        $posts = Post::all();
+        $settings = Setting::all()->toArray();
+        return view('post', compact( 'posts', 'settings'));
+    }
+
     public function contact()
     {
         $posts = Post::all();
         $settings = Setting::all()->toArray();
-        $contact_page = 'contact';
-        return view('contact', compact( 'posts', 'settings', 'contact_page'));
+        return view('contact', compact( 'posts', 'settings'));
     }
 
     public function admin()

@@ -21,6 +21,8 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/rooms', 'HomeController@rooms')->name('rooms');
 Route::get('/detail', 'HomeController@detail_rooms')->name('detail');
 
+Route::get('/post', 'HomeController@post')->name('post');
+
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
