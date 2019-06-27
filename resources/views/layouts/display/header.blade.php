@@ -136,7 +136,7 @@
                             </li>
 
                             <li class="main_nav_item">
-                                <a href="#">
+                                <a href="{{ route('rooms') }}">
                                     {{ __('rooms') }}
                                 </a>
                             </li>
