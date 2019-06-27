@@ -18,8 +18,10 @@
                         <tr>
                             <th>{{__('ID')}}</th>
                             <th>{{__('Name')}}</th>
+                            <th>{{__('Birthday')}}</th>
                             <th>{{__('Phone')}}</th>
                             <th>{{__('Email')}}</th>
+                            <th>{{__('address')}}</th>
                             <th>{{__('Images')}}</th>
                             <th>{{__('Role')}}</th>
                             <th>
@@ -35,10 +37,12 @@
                             <tr>
                                 <td>{!! $user->id !!}</td>
                                 <td>{!! $user->name !!}</td>
+                                <td>{!! $user->birthday !!}</td>
                                 <td>{!! $user->phone !!}</td>
                                 <td>{!! $user->email !!}</td>
+                                <td>{!! $user->address !!}</td>
                                 <td>
-                                    <img src="{!! $user->images !!}" alt="" width="130px" height="130px">
+                                    <img src="/upload_image/{!! $user->images !!}" alt="" width="130px" height="130px">
                                 </td>
                                 <td>{!! $user->role !!}</td>
                                 <td>
@@ -46,7 +50,7 @@
                                        class="btn btn-info btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href=""
+                                    <a href="{{ route('remove_user', $user->id) }}"
                                        class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>

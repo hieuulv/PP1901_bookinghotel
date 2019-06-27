@@ -66,9 +66,14 @@ Route::get('admin/user', 'UserController@index_user')->name('index_user');
 
 //Route add user
 Route::get('admin/user/add', 'UserController@create')->name('create_user');
+Route::post('admin/user/add', 'UserController@add')->name('add_user');
 
 //Route edit user
 Route::get('admin/user/edit/{id}', 'UserController@update')->name('update_user');
+Route::post('admin/user/edit/{id}', 'UserController@edit')->name('edit_user');
+
+// Remove Comment
+Route::get('admin/user/remove/{id}', 'UserController@remove')->name('remove_user');
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------
