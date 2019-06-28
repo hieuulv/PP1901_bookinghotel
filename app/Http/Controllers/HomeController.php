@@ -63,7 +63,8 @@ class HomeController extends Controller
     {
         $posts = Post::all();
         $settings = Setting::all()->toArray();
-        return view('contact', compact( 'posts', 'settings'));
+        $slide_subpages = Slide_subpage::all()->toArray();
+        return view('contact', compact( 'posts', 'settings', 'slide_subpages'));
     }
 
     public function admin()
