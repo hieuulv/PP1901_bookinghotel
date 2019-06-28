@@ -5,52 +5,20 @@
 
         <div class="owl-carousel owl-theme home_slider">
 
-            <div class="owl-item home_slider_item">
-                <div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
+            @foreach($slide_homes as $slide_home)
+                <div class="owl-item home_slider_item">
+                    <div class="home_slider_background"
+                         style="background-image:url('/upload_image/{{ $slide_home->image }}')"></div>
 
-                <div class="home_slider_content text-center">
-                    <div class="home_slider_content_inner" data-animation-in="flipInX"
-                         data-animation-out="animate-out fadeOut">
-                        <h1>discover</h1>
-                        <h1>the world</h1>
-                        <div class="button home_slider_button">
-                            <div class="button_bcg"></div>
-                            <a href="#">explore now<span></span><span></span><span></span></a></div>
+                    <div class="home_slider_content text-center">
+                        <div class="home_slider_content_inner" data-animation-in="flipInX"
+                             data-animation-out="animate-out fadeOut">
+                            <h1>{{ $slide_home->title_one }}</h1>
+                            <h1>{{ $slide_home->title_two }}</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Slider Item -->
-            <div class="owl-item home_slider_item">
-                <div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
-
-                <div class="home_slider_content text-center">
-                    <div class="home_slider_content_inner" data-animation-in="flipInX"
-                         data-animation-out="animate-out fadeOut">
-                        <h1>discover</h1>
-                        <h1>the world</h1>
-                        <div class="button home_slider_button">
-                            <div class="button_bcg"></div>
-                            <a href="#">explore now<span></span><span></span><span></span></a></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slider Item -->
-            <div class="owl-item home_slider_item">
-                <div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
-
-                <div class="home_slider_content text-center">
-                    <div class="home_slider_content_inner" data-animation-in="flipInX"
-                         data-animation-out="animate-out fadeOut">
-                        <h1>discover</h1>
-                        <h1>the world</h1>
-                        <div class="button home_slider_button">
-                            <div class="button_bcg"></div>
-                            <a href="#">explore now<span></span><span></span><span></span></a></div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
 
