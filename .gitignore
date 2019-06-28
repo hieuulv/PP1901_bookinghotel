@@ -6,6 +6,7 @@
 .idea/
 
 /public/css
+/public/upload_image
 /public/js
 /public/images
 /public/fonts
