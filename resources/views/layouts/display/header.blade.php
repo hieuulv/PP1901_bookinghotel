@@ -142,7 +142,7 @@
                             </li>
 
                             <li class="main_nav_item">
-                                <a href="#">
+                                <a href="{{ route('post') }}">
                                     {{ __('news') }}
                                 </a>
                             </li>

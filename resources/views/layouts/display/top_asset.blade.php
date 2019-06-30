@@ -15,4 +15,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/single_listing_responsive.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/colorbox.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/comment.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/blog_styles.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/blog_responsive.css') }} ">
 @endif
