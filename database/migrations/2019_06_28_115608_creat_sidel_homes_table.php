@@ -15,12 +15,12 @@ class CreatSidelHomesTable extends Migration
     {
         //
         Schema::create('slide_homes', function (Blueprint $table) {
-                    $table->bigIncrements('id');
+            $table->bigIncrements('id');
             $table->text('title_one')->nullable();
             $table->text('title_two')->nullable();
-                    $table->text('image');
-                    $table->timestamps();
-                });
+            $table->text('image');
+            $table->timestamps();
+        });
     }
 
     /**
