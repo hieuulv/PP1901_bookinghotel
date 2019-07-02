@@ -74,7 +74,7 @@
                                                      document.getElementById('logout-form').submit();"
                                                    data-toggle="modal" data-target="#logoutModal">
                                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                    Logout
+                                                    {{ __('Logout') }}
                                                 </a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -116,7 +116,7 @@
                         <div class="logo">
                             <a href="{{ route('index') }}">
                                 <img src="images/logo.png" alt="">
-                                {{ $settings[0]['logo'] }}
+                                {{ $settings[0]['text_logo'] }}
                             </a>
                         </div>
                     </div>

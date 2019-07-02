@@ -4,10 +4,10 @@
 
     <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll">
-            <img src="{{ asset('images/contact_background.jpg') }}" alt="">
+            <img src="/upload_image/{{ $slide_subpages[2]['image'] }}" alt="">
         </div>
         <div class="home_content">
-            <div class="home_title">contact</div>
+            <div class="home_title">{{ $slide_subpages[2]['title'] }}</div>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
                     <!-- Contact Form -->
                     <div class="contact_form_container">
 
-                        <div class="contact_title text-center">Liên hệ với chúng tôi</div>
+                        <div class="contact_title text-center">{{ __('Liên hệ với chúng tôi') }}</div>
 
                         <form action="#" id="contact_form" class="contact_form text-center">
 
@@ -27,7 +27,7 @@
                                    placeholder="Name" required="required">
 
                             <input type="text" id="contact_form_email" class="contact_form_email input_field"
-                                   placeholder="E-mail" required="required" >
+                                   placeholder="E-mail" required="required">
 
                             <input type="text" id="contact_form_subject" class="contact_form_name input_field"
                                    placeholder="Phone" required="required" style="margin-top: 11px;">
@@ -70,7 +70,8 @@
                     <!-- About - Content -->
                     <div class="about_content">
                         <div class="logo_container about_logo">
-                            <div class="logo"><a href="#"><img src="images/logo.png" alt="">travelix</a></div>
+                            <div class="logo"><a href="#"><img src="images/logo.png"
+                                                               alt="">{{ $settings[0]['text_logo'] }}</a></div>
                         </div>
                         <p class="about_text">
                             {{ __('Đến với Travelix của chúng tôi, quý khách sẽ được phục vụ tận tình. Đồng hành cùng chúng tôi bạn, bạn sẽ có những chuyến đi đầy trải nghiệm. Với Travelix, việc đặt chỗ ở, khách sạn, nhà riêng...trở nên nhanh chóng và dễ dàng.') }}
