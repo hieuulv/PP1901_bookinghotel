@@ -130,15 +130,26 @@
                             </li>
 
                             <li class="main_nav_item">
-                                <a href="#">
+                                <a href="{{ route('about') }}">
                                     {{ __('about us') }}
                                 </a>
                             </li>
 
-                            <li class="main_nav_item">
-                                <a href="{{ route('rooms') }}">
-                                    {{ __('rooms') }}
-                                </a>
+                            <li class="main_nav_item dropdown">
+                                <a class="dropbtn" href="{{ route('rooms') }}">{{ __('Rooms') }}</a>
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a href="">
+                                            {{ __('Thông Thường') }}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="">
+                                            {{ __('Resort') }}
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class="main_nav_item">
@@ -152,6 +163,7 @@
                                     {{ __('contact') }}
                                 </a>
                             </li>
+
 
                             @if (Auth::check() && Auth::user()->role == "member")
                                 <li class="main_nav_item">

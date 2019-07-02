@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/navhover.css') }}">
 @if(isset($homepage) && $homepage = 'index')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }} ">
@@ -17,4 +18,5 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/comment.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/blog_styles.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/blog_responsive.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/about_styles.css') }} ">
 @endif

@@ -291,8 +291,8 @@
 
 
     <div class="cta">
-        <!-- Image by https://unsplash.com/@thanni -->
-        <div class="cta_background" style="background-image:url(images/cta.jpg)"></div>
+
+        <div class="cta_background" style="background-image:url(images/cmen.jpeg)"></div>
 
         <div class="container">
             <div class="row">
