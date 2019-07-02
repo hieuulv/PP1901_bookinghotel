@@ -22,6 +22,10 @@ class UserController extends Controller
         return view('admin.user.add');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function add(Request $request)
     {
         $users = new User();
@@ -39,7 +43,7 @@ class UserController extends Controller
             $images_File->move('upload_image/', $FileName);
             $users->images = $FileName;
         }
-        $users->images = "blog_2.jpg";
+        $users->images = config('image_default.image_df');
         $users->save();
 
         return redirect()->route('index_user', compact('users'));
@@ -81,6 +85,7 @@ class UserController extends Controller
         return redirect()->route('index_user', compact('users'));
     }
 
+//    remove user
     public function remove($id)
     {
         $users = User::destroy($id);
