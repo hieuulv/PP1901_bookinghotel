@@ -21,21 +21,24 @@
 
                         <div class="contact_title text-center">{{ __('Liên hệ với chúng tôi') }}</div>
 
-                        <form action="#" id="contact_form" class="contact_form text-center">
+                        <form action="{{ route('contact_admin') }}" id="contact_form" method="post"
+                              class="contact_form text-center">
+                            {{--bat buoc phai co token--}}
+                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
                             <input type="text" id="contact_form_name" class="contact_form_name input_field"
-                                   placeholder="Name" required="required">
+                                   placeholder="Name" name="name" required="required">
 
                             <input type="text" id="contact_form_email" class="contact_form_email input_field"
-                                   placeholder="E-mail" required="required">
+                                   placeholder="E-mail" name="email" required="required">
 
                             <input type="text" id="contact_form_subject" class="contact_form_name input_field"
-                                   placeholder="Phone" required="required" style="margin-top: 11px;">
+                                   placeholder="Phone" name="phone" required="required" style="margin-top: 11px;">
 
                             <input type="text" id="contact_form_subject" class="contact_form_email input_field"
-                                   placeholder="Address" required="required" style="margin-top: 11px;">
+                                   placeholder="Address" name="address" required="required" style="margin-top: 11px;">
 
-                            <textarea id="contact_form_message" class="text_field contact_form_message" name="message"
+                            <textarea id="contact_form_message" class="text_field contact_form_message" name="content"
                                       rows="4" placeholder="Message" required="required"
                                       data-error="Please, write us a message."></textarea>
 

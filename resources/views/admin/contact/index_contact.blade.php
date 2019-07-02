@@ -36,7 +36,7 @@
                                 <td>{!! $contact->phone !!}</td>
                                 <td>{!! $contact->address !!}</td>
                                 <td>{!! $contact->content !!}</td>
-                                <td>{!! $contact->created_ad !!}</td>
+                                <td>{!! $contact->created_at !!}</td>
                                 <td>
                                     <a href="{{ route('remove_contact', $contact->id ) }}"
                                        class="btn btn-danger btn-circle btn-sm">

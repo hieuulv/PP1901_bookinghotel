@@ -71,7 +71,6 @@ class UserController extends Controller
             $users->email = $request->get('email');
             $users->address = $request->get('address');
             $users->role = $request->get('role');
-            $users->password = Hash::make($request->get('password'));
             //upload_image
             if ($request->file('images')) {
                 $images_File = $request->file('images');
