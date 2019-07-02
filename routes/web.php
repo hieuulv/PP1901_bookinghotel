@@ -85,8 +85,25 @@ Route::get('admin/user/remove/{id}', 'UserController@remove')->name('remove_user
 // Route Contact Admin
 Route::get('admin/contact', 'ContactController@index_contact')->name('index_contact');
 
-// Remove Contact
+// Remove Contact Admin
 Route::get('admin/contact/remove/{id}', 'ContactController@remove')->name('remove_contact');
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+// Route Index Slide Home
+Route::get('admin/slide_home', 'SlideHomeController@index_slide_home')->name('slide_home');
+
+// Route edit Slide Home
+Route::get('admin/slide_home/edit/{id}', 'SlideHomeController@update')->name('update_slide_home');
+Route::post('admin/slide_home/edit/{id}', 'SlideHomeController@edit')->name('edit_slide_home');
+
+// Route Slide Subpage
+Route::get('admin/slide_subpage', 'SlideSubpageController@index_slide_subpage')->name('slide_subpage');
+
+// Route edit Slide Subpage
+Route::get('admin/slide_subpage/edit/{id}', 'SlideSubpageController@update')->name('update_slide_subpage');
+Route::post('admin/slide_subpage/edit/{id}', 'SlideSubpageController@edit')->name('edit_slide_subpage');
+
 //----------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------END ADMIN--------------------------------------------------------------
