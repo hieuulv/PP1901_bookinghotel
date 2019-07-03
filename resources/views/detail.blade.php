@@ -12,8 +12,10 @@
     </div>
 
 
+
     <div class="container">
         <div class="row">
+
             <div class="col-lg-12">
                 <div class="single_listing">
 
@@ -24,17 +26,12 @@
                         <!-- Title -->
                         <div class="hotel_title_container d-flex flex-lg-row flex-column">
                             <div class="hotel_title_content">
-                                <h1 class="hotel_title">{{ __('phong 1') }}</h1>
+                                <h1 class="hotel_title">{{ __('Đà Lạt Máy Bay - Vườn Rau Thủy Canh - Đường Hầm Đất Sét (Tour Tiêu Chuẩn)') }}</h1>
 
-                                <div class="hotel_location">{{ __('me tr ha') }}</div>
-                            </div>
-                            <div class="hotel_title_button ml-lg-auto text-lg-right">
-                                <div class="button book_button trans_200"><a
-                                            href="#">book<span></span><span></span><span></span></a></div>
-                                <div class="hotel_map_link_container">
-                                    <div class="hotel_map_link">{{ __('Xem vị trí trên Maps') }}</div>
+                                <div class="hotel_location"><i class="fas fa-map-marker-alt"></i> {{ __('me tri ha') }}
                                 </div>
                             </div>
+
                         </div>
 
                         <!-- Listing Image -->
@@ -168,11 +165,24 @@
                             </div>
                         </div>
 
-                        <!-- Hotel Info Text -->
+                        <div class="container">
+                            <div class="row">
 
-                        <div class="hotel_info_text">
-                            <p>{{ __('vai loi gioi thieu qua ve phong') }}</p>
+                                    <div class="col-7">
+                                        <div class="hotel_info_text">
+                                            <p>{{ __('vai loi gioi thieu qua ve phongaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') }}</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-5">
+                                        <p>{{ __('vai loi gioi thieu qua ve phongaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') }}</p>
+                                    </div>
+
+                            </div>
+
                         </div>
+
 
                         <!-- Hotel Info Tags -->
 

@@ -4,10 +4,10 @@
 
     <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll">
-            <img src="/upload_image/{{ $slide_subpages[2]['image'] }}" alt="">
+            <img src="/upload_image/{{ $slide_subpages[3]['image'] }}" alt="">
         </div>
         <div class="home_content">
-            <div class="home_title">{{ $slide_subpages[2]['title'] }}</div>
+            <div class="home_title">{{ $slide_subpages[3]['title'] }}</div>
         </div>
     </div>
 
