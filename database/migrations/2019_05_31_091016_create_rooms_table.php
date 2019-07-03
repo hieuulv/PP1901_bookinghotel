@@ -17,7 +17,7 @@ class CreateRoomsTable extends Migration
             $table->bigIncrements('id');
             $table->text('name')->nullable();
             $table->text('title')->nullable();
-            $table->text('content')->nullable();
+            $table->text('rooms_detail')->nullable();
             $table->integer('price')->nullable();
             $table->text('address')->nullable();
             $table->text('bed_type')->nullable();

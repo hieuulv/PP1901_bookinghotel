@@ -17,8 +17,8 @@
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
                             <div class="form-group">
-                                <label for="logo">{{ __('Logo') }}</label>
-                                <input type="text" value="{!! $settings->logo !!}" name="logo" class="form-control">
+                                <label for="logo">{{ __('Logo Text') }}</label>
+                                <input type="text" value="{!! $settings->text_logo !!}" name="text_logo" class="form-control">
                             </div>
 
                             <div class="form-group">

@@ -32,7 +32,7 @@ class SettingController extends Controller
         if (empty($settings)) {
             return redirect('admin/setting');
         } else {
-            $settings->logo = $request->get('logo');
+            $settings->text_logo = $request->get('text_logo');
             $settings->email = $request->get('email');
             $settings->phone = $request->get('phone');
             $settings->address = $request->get('address');

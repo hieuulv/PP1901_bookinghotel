@@ -17,7 +17,8 @@
                         <thead>
                         <tr>
                             <th>{{__('ID')}}</th>
-                            <th>{{__('Logo')}}</th>
+                            <th>{{__('Logo Image')}}</th>
+                            <th>{{__('Logo Text')}}</th>
                             <th>{{__('Email')}}</th>
                             <th>{{__('Phone')}}</th>
                             <th>{{__('Address')}}</th>
@@ -30,7 +31,10 @@
                         @foreach($settings as $setting)
                             <tr>
                                 <td>{!! $setting->id !!}</td>
-                                <td>{!! $setting->logo !!}</td>
+                                <td>
+                                    <img src="/upload_image/{!! $setting->image_logo !!}" alt="">
+                                </td>
+                                <td>{!! $setting->text_logo !!}</td>
                                 <td>{!! $setting->email !!}</td>
                                 <td>{!! $setting->phone !!}</td>
                                 <td>{!! $setting->address !!}</td>
