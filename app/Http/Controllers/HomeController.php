@@ -36,6 +36,13 @@ class HomeController extends Controller
         return view('index', compact('posts', 'settings', 'comments', 'homepage', 'slide_homes'));
     }
 
+    public function about()
+    {
+        $settings = Setting::all()->toArray();
+        $slide_subpages = Slide_subpage::all()->toArray();
+        return view('about', compact( 'settings', 'slide_subpages'));
+    }
+
     public function rooms()
     {
         $posts = Post::all();

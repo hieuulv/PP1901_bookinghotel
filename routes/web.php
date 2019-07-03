@@ -18,6 +18,8 @@ Route::get('/admin', 'HomeController@admin')->middleware('CheckAdmin')->name('ad
 
 Route::get('/', 'HomeController@index')->name('index');
 
+Route::get('/about', 'HomeController@about')->name('about');
+
 Route::get('/rooms', 'HomeController@rooms')->name('rooms');
 Route::get('/detail', 'HomeController@detail_rooms')->name('detail');
 
