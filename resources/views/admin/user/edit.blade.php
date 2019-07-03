@@ -53,18 +53,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password">{{ __('Password') }}</label>
-                                <input type="password" name="password" required autocomplete="new-password"
-                                       class="form-control @error('password') is-invalid @enderror">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password">{{ __('Confirm Password') }}</label>
-                                <input type="password" name="cf_password" required autocomplete="new-password"
-                                       class="form-control">
-                            </div>
-
-                            <div class="form-group">
                                 <label for="role">{{ __('Role') }}</label>
                                 <select name="role" class="form-control">
                                     <option>member</option>

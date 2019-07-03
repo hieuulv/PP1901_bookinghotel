@@ -26,6 +26,7 @@ Route::get('/detail', 'HomeController@detail_rooms')->name('detail');
 Route::get('/post', 'HomeController@post')->name('post');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('/contact', 'HomeController@contact_admin')->name('contact_admin');
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
