@@ -165,21 +165,16 @@
                             </div>
                         </div>
 
-                        <div class="container">
-                            <div class="row">
 
-                                    <div class="col-7">
-                                        <div class="hotel_info_text">
-                                            <p>{{ __('vai loi gioi thieu qua ve phongaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') }}</p>
-                                        </div>
+                        <div class="hotel_info_text">
 
-                                    </div>
-
-                                    <div class="col-5">
-                                        <p>{{ __('vai loi gioi thieu qua ve phongaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') }}</p>
-                                    </div>
-
+                            <div class="reviews_title">
+                                {{ __('Over Review') }}
                             </div>
+                            <div class="room_extra ">
+                                {{ __('Located in the heart of Aspen with a unique blend of contemporary luxury and historic heritage, deluxe accommodations, superb amenities, genuine hospitality and dedicated service for an elevated experience in the Rocky Mountains.') }}
+                            </div>
+
 
                         </div>
 
@@ -266,19 +261,19 @@
 
                             {{--commnet--}}
                             <section class="commnet">
-                                <form class="contact-form row">
+                                <form action="#" method="post" class="contact-form row">
                                     <div class="form-field col-lg-6">
                                         <input id="name" class="input-text js-input" type="text" required>
-                                        <label class="label" for="name">Name</label>
+                                        <label class="label" for="name">{{ __('Name') }}</label>
                                     </div>
                                     <div class="form-field col-lg-6 ">
                                         <input id="email" class="input-text js-input" type="email" required>
-                                        <label class="label" for="email">E-mail</label>
+                                        <label class="label" for="email">{{ __('E-mail') }}</label>
                                     </div>
 
                                     <div class="form-field col-lg-12">
                                         <input id="message" class="input-text js-input" type="text" required>
-                                        <label class="label" for="message">Message</label>
+                                        <label class="label" for="message">{{ __('Message') }}</label>
                                     </div>
                                     <div class="form-field col-lg-12">
                                         <input class="submit-btn" type="submit" value="Submit">
