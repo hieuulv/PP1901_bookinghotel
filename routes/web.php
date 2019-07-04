@@ -35,10 +35,11 @@ Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
 //--------------------------------------------------------------ADMIN--------------------------------------------------------------
 
+
+//----------------------------------------------------------------------------------------------
 // Route index Category Admin
 Route::get('admin/category', 'CategoryController@index_category')->name('index_category');
 
-//----------------------------------------------------------------------------------------------
 // Add Category
 Route::get('admin/category/create', 'CategoryController@create')->name('create_category');
 Route::post('admin/category/create', 'CategoryController@add')->name('add_category');
@@ -49,6 +50,22 @@ Route::post('admin/category/update/{id}', 'CategoryController@edit')->name('edit
 
 // Remove Category
 Route::get('admin/category/remove/{id}', 'CategoryController@remove')->name('remove_category');
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+// Route index Rooms Admin
+Route::get('admin/rooms', 'RoomsController@index_rooms')->name('index_rooms');
+
+// Add rooms
+Route::get('admin/rooms/create', 'RoomsController@create')->name('create_rooms');
+Route::post('admin/rooms/create', 'RoomsController@add')->name('add_rooms');
+
+// Edit rooms
+Route::get('admin/rooms/update/{id}', 'RoomsController@update')->name('update_rooms');
+Route::post('admin/rooms/update/{id}', 'RoomsController@edit')->name('edit_rooms');
+
+// Remove Category
+Route::get('admin/rooms/remove/{id}', 'RoomsController@remove')->name('remove_rooms');
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------
