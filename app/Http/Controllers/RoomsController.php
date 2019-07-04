@@ -66,8 +66,10 @@ class RoomsController extends Controller
 
     public function remove($id)
     {
-        $rooms = Room::destroy($id);
-        if (empty($rooms)) {
+        $rooms = Room::find($id);
+        if ($rooms) {
+            $rooms = Room::destroy($id);
+        }else{
             abort(404);
         }
 
