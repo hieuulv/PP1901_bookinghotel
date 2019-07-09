@@ -6,10 +6,6 @@
             <h1 class="h3 mb-0 text-gray-800"> {{__('Categories')}}</h1>
         </div>
 
-        @if(session('status'))
-            <p class="alert alert-success">{{ session('status') }}</p>
-        @endif
-
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary"> {{__('Table Categories')}}</h6>
@@ -44,6 +40,7 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <a href="{{ route('remove_category', $cate->id ) }}"
+                                       onclick="return confirm('Bạn có chắc chắc muốn xóa không?.')"
                                        class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactFormRequest;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Post;
@@ -75,7 +76,7 @@ class HomeController extends Controller
         return view('contact', compact( 'posts', 'settings', 'slide_subpages'));
     }
 
-    public function contact_admin(Request $request)
+    public function contact_admin(ContactFormRequest $request)
     {
         $contacts = new Contact();
         $contacts->name = $request->get('name');

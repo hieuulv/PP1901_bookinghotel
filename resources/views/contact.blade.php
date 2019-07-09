@@ -11,6 +11,7 @@
         </div>
     </div>
 
+
     <div class="contact_form_section">
         <div class="container">
             <div class="row">
@@ -22,26 +23,70 @@
                         <div class="contact_title text-center">{{ __('Liên hệ với chúng tôi') }}</div>
 
                         <form action="{{ route('contact_admin') }}" id="contact_form" method="post"
-                              class="contact_form text-center">
+                              class="contact_form">
                             {{--bat buoc phai co token--}}
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                            <div class="row">
 
-                            <input type="text" id="contact_form_name" class="contact_form_name input_field"
-                                   placeholder="Name" name="name" required="required">
 
-                            <input type="text" id="contact_form_email" class="contact_form_email input_field"
-                                   placeholder="E-mail" name="email" required="required">
+                                <div class="col-6">
+                                    <input type="text" id="contact_form_name" name="name" placeholder="Name"
+                                           value="{{ old('name') }}"
+                                           class="form-control @error('name') is-invalid @enderror">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>&emsp;{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
 
-                            <input type="text" id="contact_form_subject" class="contact_form_name input_field"
-                                   placeholder="Phone" name="phone" required="required" style="margin-top: 11px;">
+                                <div class="col-6">
+                                    <input type="text" id="contact_form_email" name="email" placeholder="E-mail"
+                                           value="{{ old('email') }}"
+                                           class="form-control @error('email') is-invalid @enderror">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>&emsp;{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
 
-                            <input type="text" id="contact_form_subject" class="contact_form_email input_field"
-                                   placeholder="Address" name="address" required="required" style="margin-top: 11px;">
+                                <div class="col-6">
+                                    <input type="text" id="contact_form_name" name="phone" placeholder="Phone"
+                                           value="{{ old('phone') }}"
+                                           class="form-control @error('phone') is-invalid @enderror">
+                                    @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
 
-                            <textarea id="contact_form_message" class="text_field contact_form_message" name="content"
-                                      rows="4" placeholder="Message" required="required"
-                                      data-error="Please, write us a message."></textarea>
+                                <div class="col-6">
+                                    <input type="text" id="contact_form_subject" name="address"
+                                           placeholder="Address"
+                                           value="{{ old('address') }}"
+                                           class="form-control @error('address') is-invalid @enderror">
+                                    @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
+                                <div class="col-12">
+                                    <textarea id="contact_form_message"
+                                          class="form-control @error('content') is-invalid @enderror"
+                                          name="content"
+                                          rows="4" placeholder="Message">{{ old('content') }}</textarea>
+                                    @error('content')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                            </div>
                             <button type="submit" id="form_submit_button" class="form_submit_button button trans_200">
                                 {{ __('send message') }}<span></span><span></span><span></span>
                             </button>
