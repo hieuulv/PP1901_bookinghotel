@@ -33,9 +33,9 @@ class CategoryFormRequest extends FormRequest
     {
         return [
 
-            'name.required' => 'Tên danh mục bắt buộc nhập.',
-            'name.min' => 'Tên danh mục không nhỏ hơn 3 ký tự.',
-            'name.unique' => 'Tên danh mục đã được tạo từ trước.',
+            'name.required' => "{{ __('Tên danh mục bắt buộc nhập.') }}",
+            'name.min' => "{{ __('Tên danh mục không nhỏ hơn 3 ký tự.') }}",
+            'name.unique' => "{{ __('Tên danh mục đã được tạo từ trước.') }}",
         ];
     }
 }

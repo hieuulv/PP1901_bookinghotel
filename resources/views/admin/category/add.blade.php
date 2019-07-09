@@ -10,7 +10,7 @@
         @endif
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{__('Dashboard')}}</h1>
+            <h1 class="h3 mb-0 text-gray-800">{{ __('Dashboard') }}</h1>
         </div>
 
         <div class="card shadow mb-4">
@@ -22,7 +22,7 @@
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
                             <div class="form-group">
-                                <label for="name">{{__('Name Categories')}}</label>
+                                <label for="name">{{ __('Name Categories') }}</label>
                                 <input type="text" name="name" value="{{ old('name') }}"
                                        class="form-control @error('name') is-invalid @enderror">
                                 @error('name')
@@ -33,7 +33,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
-                                {{__('Create Categories')}}
+                                {{ __('Create Categories') }}
                             </button>
                         </form>
                     </div>
@@ -42,6 +42,5 @@
         </div>
 
     </div>
-
 
 @endsection

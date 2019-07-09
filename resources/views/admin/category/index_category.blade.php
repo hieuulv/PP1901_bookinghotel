@@ -40,7 +40,7 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <a href="{{ route('remove_category', $cate->id ) }}"
-                                       onclick="return confirm('Bạn có chắc chắc muốn xóa không?.')"
+                                       onclick="return confirm('{{ __('Bạn có chắc chắc muốn xóa không?.') }}')"
                                        class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>

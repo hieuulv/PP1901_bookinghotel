@@ -37,15 +37,15 @@ class ContactFormRequest extends FormRequest
     {
         return [
 
-            'name.required' => 'Vui lòng điền họ tên.',
-            'email.required' => 'Vui lòng điền địa chỉ Email.',
-            'email.email' => 'Vui lòng điền đúng định dạng đỉa chỉ Email.',
-            'phone.required' => 'Vui lòng điền số điện thoại.',
-            'phone.regex' => 'Vui lòng điền đúng định dạng số.',
-            'phone.min' => 'Số điện thoại không nhỏ hơn 10 ký tự.',
-            'address.required' => 'Vui lòng điền địa chỉ.',
-            'content.required' => 'Vui lòng không để trống nội dung.',
-            'content.max' => 'Nội dung không quá 400 từ.',
+            'name.required' => "{{ __('Vui lòng điền họ tên.') }}",
+            'email.required' => "{{ __('Vui lòng điền địa chỉ Email.') }}",
+            'email.email' => "{{ __('Vui lòng điền đúng định dạng đỉa chỉ Email.') }}",
+            'phone.required' => "{{ __('Vui lòng điền số điện thoại.') }}",
+            'phone.regex' => "{{ __('Vui lòng điền đúng định dạng số.') }}",
+            'phone.min' => "{{ __('Số điện thoại không nhỏ hơn 10 ký tự.') }}",
+            'address.required' => "{{ __('Vui lòng điền địa chỉ.') }}",
+            'content.required' => "{{ __('Vui lòng không để trống nội dung.') }}",
+            'content.max' => "{{ __('Nội dung không quá 400 từ.') }}",
         ];
     }
 }
