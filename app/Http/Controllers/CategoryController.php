@@ -26,10 +26,12 @@ class CategoryController extends Controller
     {
         $categories = new Category();
         $categories->name = $request->get('name');
-        $categories->save();
+        $mess = "";
+        if ($categories->save()){
+            $mess = "Save successfully";
+        }
 
-
-        return redirect()->route('index_category', compact('categories'));
+        return view('admin.category.add', compact('categories'))->with('mess', $mess);
     }
 
 

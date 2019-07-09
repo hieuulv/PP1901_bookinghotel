@@ -25,7 +25,17 @@ class CategoryFormRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|min:3',
+            'name' => 'required|unique:categories|min:3'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
+            'name.required' => "{{ __('Tên danh mục bắt buộc nhập.') }}",
+            'name.min' => "{{ __('Tên danh mục không nhỏ hơn 3 ký tự.') }}",
+            'name.unique' => "{{ __('Tên danh mục đã được tạo từ trước.') }}",
         ];
     }
 }
