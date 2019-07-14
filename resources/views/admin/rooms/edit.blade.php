@@ -9,14 +9,19 @@
             <h1 class="h3 mb-0 text-gray-800">{{ __('Dashboard') }}</h1>
         </div>
 
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <div class="row justify-content-center">
-                    <div class="col-6 ">
-                        <form action="{{ route('edit_rooms', $rooms->id) }}" method="post">
-                            {{--bat buoc phai co token--}}
-                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+        <form action="{{ route('edit_rooms', $rooms->id) }}" method="post" enctype="multipart/form-data">
+            {{--bat buoc phai co token--}}
+            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="row justify-content-center">
+
+                        <div class="col-4 text-center" style="margin-top: 100px">
+                            <input type="file" name="images[]" multiple class="text-center center-block file-upload">
+                        </div>
+
+                        <div class="col-6 ">
                             <div class="form-group">
                                 <label for="name">{{ __('Name Rooms') }}</label>
                                 <input type="text" name="name" value="{{ $rooms->name }}" class="form-control">
@@ -29,7 +34,8 @@
 
                             <div class="form-group">
                                 <label for="rooms_detail">{{ __('Rooms Detail') }}</label>
-                                <textarea class="form-control" rows="5" name="rooms_detail">{{ $rooms->rooms_detail }}</textarea>
+                                <textarea class="form-control" rows="5"
+                                          name="rooms_detail">{{ $rooms->rooms_detail }}</textarea>
                             </div>
 
                             <div class="form-group">
@@ -52,13 +58,15 @@
                             </div>
 
                             <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
-                                {{__('Create Rooms')}}
+                                {{__('Update Rooms')}}
                             </button>
-                        </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+        </form>
 
     </div>
 

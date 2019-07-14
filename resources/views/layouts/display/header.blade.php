@@ -115,7 +115,7 @@
                     <div class="logo_container">
                         <div class="logo">
                             <a href="{{ route('index') }}">
-                                <img src="images/logo.png" alt="">
+                                <img src="{{ asset('images/logo.png') }}" alt="">
                                 {{ $settings[0]['text_logo'] }}
                             </a>
                         </div>
