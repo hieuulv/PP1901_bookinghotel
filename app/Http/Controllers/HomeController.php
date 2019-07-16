@@ -66,7 +66,6 @@ class HomeController extends Controller
 
     public function detail_rooms($id)
     {
-        $rooms_first = Room::paginate(1);
         $settings = Setting::all()->toArray();
         $slide_subpages = Slide_subpage::all()->toArray();
 //        detail rooms
@@ -75,7 +74,7 @@ class HomeController extends Controller
         $image = Image::where('rooms_id', $rooms['id'])->get()->toArray();
         $image_array['images'] = $image;
 
-        return view('detail', compact('rooms_first', 'settings', 'slide_subpages', 'rooms', 'image_array'));
+        return view('detail', compact('settings', 'slide_subpages', 'rooms', 'image_array'));
     }
 
     public function post()

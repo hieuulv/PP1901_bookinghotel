@@ -55,7 +55,7 @@ class RoomsController extends Controller
         return redirect()->route('index_rooms', compact('new_room'));
     }
 
-    //EDIT CATEGORIES
+    //EDIT ROOMS
     public function update($id)
     {
         $rooms = Room::find($id);
@@ -92,25 +92,12 @@ class RoomsController extends Controller
                 }
             }
         }
+
         return redirect()->route('index_rooms', compact('new_room'));
     }
 
     public function remove($id)
     {
-//        $rooms_remove = Room::find($id);
-        $image_remove = Image::where('rooms_id', $id);
-        dd($image_remove);
-//        if ($rooms_remove){
-//            $image_remove = Image::find();
-//        }
 
-//        $rooms_image = Image::find($rooms_id);
-//        if ($rooms) {
-//            $rooms = Room::destroy($id);
-//        } else {
-//            abort(404);
-//        }
-//
-//        return redirect()->route('index_rooms', compact('rooms'));
     }
 }

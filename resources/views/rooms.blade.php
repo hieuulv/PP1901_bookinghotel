@@ -13,7 +13,6 @@
 
 
     <div class="offers">
-
         <div class="container">
             <div class="row">
 
@@ -80,8 +79,8 @@
                                     <div class="col-lg-1 temp_col"></div>
                                     <div class="col-lg-3 col-1680-4">
                                         <div class="offers_image_container">
-                                            <div class="offers_image_background"
-                                                 style="background-image:url(/upload_image/{{ $room['images']['images'] }})">
+                                            <div class="offers_image_background">
+                                                <img src="/upload_image/{{ $room['images']['images'] }}">
                                             </div>
                                             <div class="offer_name">
                                                 <a href="{{ route('detail', $room['id']) }}">{!! $room['name'] !!}</a>
@@ -151,10 +150,27 @@
                     </div>
                 </div>
 
+
+            </div>
+
+            <div class="blog_navigation text-center">
+                <ul>
+                    <li class="blog_dot active">
+                        <div></div>
+                        01.
+                    </li>
+                    <li class="blog_dot">
+                        <div></div>
+                        02.
+                    </li>
+                    <li class="blog_dot">
+                        <div></div>
+                        03.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-
 
 
 @endsection
