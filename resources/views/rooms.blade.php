@@ -13,7 +13,6 @@
 
 
     <div class="offers">
-
         <div class="container">
             <div class="row">
 
@@ -63,7 +62,7 @@
                             </li>
 
 
-                            <button>{{ __('tim kiem') }}</button>
+                            <button>{{ __('Tìm Kiếm') }}</button>
                         </ul>
                     </div>
                 </div>
@@ -73,101 +72,105 @@
 
                     <div class="offers_grid">
 
+                    @foreach( $image_array as $room)
                         <!-- Offers Item -->
-                        <div class="offers_item rating_4">
-                            <div class="row">
-                                <div class="col-lg-1 temp_col"></div>
-                                <div class="col-lg-3 col-1680-4">
-                                    <div class="offers_image_container">
-                                        <div class="offers_image_background"
-                                             style="background-image:url(images/offer_1.jpg)"></div>
-                                        <div class="offer_name"><a href="{{ route('detail') }}">{{ __('Phong 1') }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="offers_content">
-                                        <div class="offers_price">{{ __('$70') }}<span>{{ __('/đêm') }}</span></div>
-                                        <p class="offers_text">
-                                            {{ __('Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit. Nullam eu convallis tortor. Lorem ipsum dolor sit amet.') }}
-                                        </p>
-                                        <div class="offers_icons">
-                                            <ul class="offers_icons_list">
-                                                <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/sailboat.png" alt="">
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="button book_button"><a
-                                                    href="{{ route('detail') }}">{{ __('Xem them') }}
-                                                <span></span><span></span><span></span></a>
-                                        </div>
-                                        <div class="offer_reviews">
-                                            <div class="offer_reviews_content">
-                                                <div class="offer_reviews_title">{{ __('very good') }}</div>
-                                                <div class="offer_reviews_subtitle">{{ __('100 review') }}</div>
+                            <div class="offers_item rating_4">
+                                <div class="row">
+                                    <div class="col-lg-1 temp_col"></div>
+                                    <div class="col-lg-3 col-1680-4">
+                                        <div class="offers_image_container">
+                                            <div class="offers_image_background">
+                                                <img src="/upload_image/{{ $room['images']['images'] }}">
                                             </div>
-                                            <div class="offer_reviews_rating text-center">{{ __('8.1') }}</div>
+                                            <div class="offer_name">
+                                                <a href="{{ route('detail', $room['id']) }}">{!! $room['name'] !!}</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="col-lg-8">
+                                        <div class="offers_content">
+                                            <div class="offers_price">{!! $room['price'] !!}
+                                                <span>{{ __('/đêm') }}</span>
+                                            </div>
+                                            <p class="offers_text">
+                                                {!! $room['title'] !!}
+                                            </p>
 
-                        <!-- Offers Item -->
-                        <div class="offers_item rating_4">
-                            <div class="row">
-                                <div class="col-lg-1 temp_col"></div>
-                                <div class="col-lg-3 col-1680-4">
-                                    <div class="offers_image_container">
-                                        <div class="offers_image_background"
-                                             style="background-image:url(images/offer_1.jpg)"></div>
-                                        <div class="offer_name"><a href="{{ route('detail') }}">{{ __('lhong 1') }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="offers_content">
-                                        <div class="offers_price">{{ __('$50') }}<span>{{ __('/đêm') }}</span></div>
-                                        <p class="offers_text">
-                                            {{ __('Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit. Nullam eu convallis tortor. Lorem ipsum dolor sit amet.') }}
-                                        </p>
-                                        <div class="offers_icons">
-                                            <ul class="offers_icons_list">
-                                                <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/sailboat.png" alt="">
+                                            <ul class="lish_detail">
+                                                <li>
+                                                    <label class="detail_rooms_lish">
+                                                        {{ __('Loại giường:') }}
+                                                    </label>
+                                                </li>
+
+                                                <li>
+                                                    <label class="detail_rooms_lish">
+                                                        {{ __('Số lượng:') }}
+                                                    </label>
+                                                </li>
+
+                                                <li>
+                                                    <label class="detail_rooms_lish">
+                                                        {{ __('Tiện nghi:') }}
+                                                    </label>
                                                 </li>
                                             </ul>
-                                        </div>
-                                        <div class="button book_button"><a
-                                                    href="{{ route('detail') }}">{{ __('Xem them') }}
-                                                <span></span><span></span><span></span></a>
-                                        </div>
-                                        <div class="offer_reviews">
-                                            <div class="offer_reviews_content">
-                                                <div class="offer_reviews_title">{{ __('very good') }}</div>
-                                                <div class="offer_reviews_subtitle">{{ __('100 review') }}</div>
+                                            <div class="offers_icons">
+                                                <ul class="offers_icons_list">
+                                                    <li class="offers_icons_item">
+                                                        <img src="{{ asset('images/post.png') }}" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item">
+                                                        <img src="{{ asset('images/compass.png') }}" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item">
+                                                        <img src="{{ asset('images/bicycle.png') }}" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item">
+                                                        <img src="{{ asset('images/sailboat.png') }}" alt="">
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="offer_reviews_rating text-center">{{ __('8.1') }}</div>
+                                            <div class="button book_button ">
+                                                <a href="{{ route('detail', $room['id']) }}">{{ __('Xem them') }}
+                                                    <span></span><span></span><span></span></a>
+                                            </div>
+                                            <div class="offer_reviews">
+                                                <div class="button home_slider_button">
+                                                    <div class="button_bcg"></div>
+                                                    <a href="#">{{ __('đặt ngay') }}</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>
 
+
+            </div>
+
+            <div class="blog_navigation text-center">
+                <ul>
+                    <li class="blog_dot active">
+                        <div></div>
+                        01.
+                    </li>
+                    <li class="blog_dot">
+                        <div></div>
+                        02.
+                    </li>
+                    <li class="blog_dot">
+                        <div></div>
+                        03.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-
 
 
 @endsection

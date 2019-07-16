@@ -33,6 +33,21 @@
     <hr class="sidebar-divider d-none d-md-block">
     {{-----------------end category-----------------}}
 
+    {{-----------------Rooms-----------------}}
+    <div class="sidebar-heading">
+        {{ __('ROOMS') }}
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('index_rooms') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>{{ __('Rooms') }}</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+    {{-----------------end Rooms-----------------}}
+
     {{-----------------contact-----------------}}
     <div class="sidebar-heading">
         {{ __('Comment') }}

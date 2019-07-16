@@ -4,10 +4,10 @@
 
     <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll">
-            <img src="{{ asset('images/single_background.jpg') }}" alt="">
+            <img src="/upload_image/{{ $slide_subpages[4]['image'] }}" alt="">
         </div>
         <div class="home_content">
-            <div class="home_title"> {{ __('the rooms') }}</div>
+            <div class="home_title"> {{ __('rooms detail') }}</div>
         </div>
     </div>
 
@@ -26,27 +26,26 @@
                         <!-- Title -->
                         <div class="hotel_title_container d-flex flex-lg-row flex-column">
                             <div class="hotel_title_content">
-                                <h1 class="hotel_title">{{ __('Đà Lạt Máy Bay - Vườn Rau Thủy Canh - Đường Hầm Đất Sét (Tour Tiêu Chuẩn)') }}</h1>
-
-                                <div class="hotel_location"><i class="fas fa-map-marker-alt"></i> {{ __('me tri ha') }}
+                                <h1 class="hotel_title">{!! $rooms['name'] !!}</h1>
+                                <div class="hotel_location"><i class="fas fa-map-marker-alt"></i>
+                                    {!! $rooms['address'] !!}
                                 </div>
                             </div>
-
+                            <div class="hotel_title_button ml-lg-auto text-lg-right">
+                                <div class="button book_button trans_200">
+                                    <a href="#">{{ __('Đặt ngay') }}</a>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Listing Image -->
 
                         <div class="hotel_image">
-                            <img src="images/listing_hotel.jpg" alt="">
-                            <div class="hotel_review_container d-flex flex-column align-items-center justify-content-center">
-                                <div class="hotel_review">
-                                    <div class="hotel_review_content">
-                                        <div class="hotel_review_title">{{ __('very good') }}</div>
-                                        <div class="hotel_review_subtitle">{{ __('100 reviews') }}</div>
-                                    </div>
-                                    <div class="hotel_review_rating text-center">{{ __('8.1') }}</div>
-                                </div>
-                            </div>
+                            @foreach( $image_array['images'] as $key => $value )
+                                @if($key == 0)
+                                    <img src="/upload_image/{{ $value['images'] }}" alt="">
+                                @endif
+                            @endforeach
                         </div>
 
                         <!-- Hotel Gallery -->
@@ -54,72 +53,18 @@
                         <div class="hotel_gallery">
                             <div class="hotel_slider_container">
                                 <div class="owl-carousel owl-theme hotel_slider">
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_1.jpg">
-                                            <img src="{{ asset('images/listing_thumb_1.jpg') }}"
-                                                 alt="https://unsplash.com/@jbriscoe">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_2.jpg">
-                                            <img src="images/listing_thumb_2.jpg" alt="https://unsplash.com/@grovemade">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_3.jpg">
-                                            <img src="images/listing_thumb_3.jpg"
-                                                 alt="https://unsplash.com/@fransaraco">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_4.jpg">
-                                            <img src="images/listing_thumb_4.jpg" alt="https://unsplash.com/@workweek">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_5.jpg">
-                                            <img src="images/listing_thumb_5.jpg" alt="https://unsplash.com/@workweek">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_6.jpg">
-                                            <img src="images/listing_thumb_6.jpg" alt="https://unsplash.com/@avidenov">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_7.jpg">
-                                            <img src="images/listing_thumb_7.jpg"
-                                                 alt="https://unsplash.com/@pietruszka">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_8.jpg">
-                                            <img src="images/listing_thumb_8.jpg" alt="https://unsplash.com/@rktkn">
-                                        </a>
-                                    </div>
-
-                                    <!-- Hotel Gallery Slider Item -->
-                                    <div class="owl-item">
-                                        <a class="colorbox cboxElement" href="images/listing_9.jpg">
-                                            <img src="images/listing_thumb_9.jpg" alt="https://unsplash.com/@mindaugas">
-                                        </a>
-                                    </div>
+                                {{--@dd($image_array['images']);--}}
+                                @foreach( $image_array['images'] as $key => $image_owl)
+                                    @if($key != 0)
+                                        <!-- Hotel Gallery Slider Item -->
+                                            <div class="owl-item">
+                                                <a class="colorbox cboxElement"
+                                                   href="/upload_image/{{ $image_owl['images'] }}">
+                                                    <img src="/upload_image/{{ $image_owl['images'] }}">
+                                                </a>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
 
                                 <!-- Hotel Slider Nav - Prev -->
@@ -168,14 +113,33 @@
 
                         <div class="hotel_info_text">
 
-                            <div class="reviews_title">
+                            <div class="review_rooms">
                                 {{ __('Over Review') }}
                             </div>
+
                             <div class="room_extra ">
-                                {{ __('Located in the heart of Aspen with a unique blend of contemporary luxury and historic heritage, deluxe accommodations, superb amenities, genuine hospitality and dedicated service for an elevated experience in the Rocky Mountains.') }}
+                                {!! $rooms['rooms_detail'] !!}
                             </div>
 
+                            <div class="lish_review">
+                                <ul>
+                                    <li>
+                                        {{ __('Giá: ') }}<lable class="price">{!! $rooms['price'] !!}</lable> <span>{{ __('/đêm') }}</span>
+                                    </li>
 
+                                    <li>
+                                        {{ __('Loại giường: ') }}<lable class="bed_type">{!! $rooms['bed_type'] !!}</lable>
+                                    </li>
+
+                                    <li>
+                                        {{ __('Số lượng: ') }}<label class="capacity">{{ __('2 người lớn') }}</label>
+                                    </li>
+
+                                    <li>
+                                        {{ __('Tiện nghi: ') }}<label class="vacilities">{{ __('Bàn là, tivi, máy sấy tóc') }}</label>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
 
@@ -183,36 +147,37 @@
 
                         <div class="hotel_info_tags">
                             <ul class="hotel_icons_list">
-                                <li class="hotel_icons_item"><img src="images/post.png" alt=""></li>
-                                <li class="hotel_icons_item"><img src="images/compass.png" alt=""></li>
-                                <li class="hotel_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                <li class="hotel_icons_item"><img src="images/sailboat.png" alt=""></li>
+                                <li class="hotel_icons_item"><img src="{{ asset('images/post.png') }}" alt=""></li>
+                                <li class="hotel_icons_item"><img src="{{ asset('images/compass.png') }}" alt=""></li>
+                                <li class="hotel_icons_item"><img src="{{ asset('images/bicycle.png') }}" alt=""></li>
+                                <li class="hotel_icons_item"><img src="{{ asset('images/sailboat.png') }}" alt=""></li>
                             </ul>
                         </div>
 
                     </div>
 
-                    <!-- Rooms -->
 
+                    <!-- Rooms -->
                     <div class="rooms">
 
                         <!-- Room -->
                         <div class="room">
 
+                            <div class="related_room">
+                                {{ __('Các phòng liên quan.') }}
+                            </div>
                             <!-- Room -->
                             <div class="row">
                                 <div class="col-lg-2">
                                     <div class="room_image">
-                                        <img src="images/room_2.jpg"
-                                             alt="https://unsplash.com/@oowgnuj">
+                                        <img src="{{ asset('images/room_2.jpg') }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-7">
                                     <div class="room_content">
-                                        <div class="room_title">{{ __('Double or Twin Room') }}</div>
-                                        <div class="room_price">{{ __('$99/night') }}</div>
-                                        <div class="room_text">{{ __('FREE cancellation before 23:59 on 20 December 2017') }}</div>
-                                        <div class="room_extra">{{ __('Breakfast $7.50') }}</div>
+                                        <div class="room_title">{{ __('phong 2') }}</div>
+                                        <div class="room_price">{{ __('99') }}{{ __('/night') }}</div>
+                                        <div class="room_extra">{{ __('Recently renovated 950 sq ft private walk out basement apartment with comfortable king bed, 1 bath, kitchen with fridge & stove,& living room with 55" smart TV with cable and netflix.') }}</div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 text-lg-right">
@@ -238,7 +203,7 @@
                                 <div class="row">
                                     <div class="col-lg-1">
                                         <div class="review_image">
-                                            <img src="images/review_1.jpg" alt="https://unsplash.com/@saaout">
+                                            <img src="{{ asset('images/review_1.jpg') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-11">

@@ -9,14 +9,20 @@
             <h1 class="h3 mb-0 text-gray-800">{{ __('Dashboard') }}</h1>
         </div>
 
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <div class="row justify-content-center">
-                    <div class="col-6 ">
-                        <form action="{{ route('add_rooms') }}" method="post">
-                            {{--bat buoc phai co token--}}
-                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+        <form action="{{ route('add_rooms') }}" method="post" enctype="multipart/form-data">
 
+            {{--bat buoc phai co token--}}
+            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="row justify-content-center">
+
+                        <div class="col-4 text-center" style="margin-top: 100px">
+                            <input type="file" name="images[]" multiple class="text-center center-block file-upload">
+                        </div>
+
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name">{{ __('Name Rooms') }}</label>
                                 <input type="text" name="name" class="form-control">
@@ -50,15 +56,15 @@
                                     <option>{{ __('Giường Đôi') }}</option>
                                 </select>
                             </div>
+                        </div>
 
-                            <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
-                                {{__('Create Rooms')}}
-                            </button>
-                        </form>
+                        <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
+                            {{__('Create Rooms')}}
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
     </div>
 

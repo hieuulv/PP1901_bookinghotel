@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     //
+    public function images(){
+        return $this->hasMany('App\Models\Image', 'rooms_id');
+    }
+
     public function comments()
     {
         return $this->hasMany('App\Models\Comment', 'room_id');

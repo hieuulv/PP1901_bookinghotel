@@ -14,6 +14,7 @@ class Hotel_typesTableSeeder extends Seeder
         //
         for ($i = 0; $i < 10; $i++) {
             DB::table('hotel_types')->insert([
+                'images' => Str::random(10),
                 'category_id' => rand(1, 40),
                 'post_image_id' => rand(1, 40),
                 'rooms_image_id' => rand(1, 40),

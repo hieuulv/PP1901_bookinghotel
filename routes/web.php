@@ -21,7 +21,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/rooms', 'HomeController@rooms')->name('rooms');
-Route::get('/detail', 'HomeController@detail_rooms')->name('detail');
+Route::get('/detail/{id}', 'HomeController@detail_rooms')->name('detail');
 
 Route::get('/post', 'HomeController@post')->name('post');
 
