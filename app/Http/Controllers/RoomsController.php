@@ -82,6 +82,9 @@ class RoomsController extends Controller
             // upload_image
             $images_File = $request->file('images');
             if ($new_room->save()) {
+
+                $image_remove = Image::where('rooms_id', $id)->delete();
+
                 foreach ($images_File as $image_Files) {
                     $new_image = new Image();
                     $FileName = $image_Files->getClientOriginalName();
@@ -93,11 +96,21 @@ class RoomsController extends Controller
             }
         }
 
-        return redirect()->route('index_rooms', compact('new_room'));
+        return redirect()->route('index_rooms', compact('new_room', 'image_remove'));
     }
 
     public function remove($id)
     {
+        $rooms = Room::find($id);
+        if ($rooms) {
+            $remove_room = Room::destroy($id);
+            if ($remove_room) {
+                $image_remove = Image::where('rooms_id', $id)->delete();
+            }
+        } else {
+            abort(404);
+        }
 
+        return redirect()->route('index_rooms', compact('rooms', 'image_remove'));
     }
 }
