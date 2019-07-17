@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactFormRequest;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Image;
@@ -32,11 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $comments = Comment::paginate(5);
-=======
         $comments = Comment::all();
->>>>>>> new
         $settings = Setting::all()->toArray();
         $homepage = 'index';
         $slide_homes = Slide_home::all();
@@ -57,11 +52,7 @@ class HomeController extends Controller
         $settings = Setting::all()->toArray();
         $slide_subpages = Slide_subpage::all()->toArray();
         $image_array = [];
-<<<<<<< HEAD
-        $rooms = Room::all()->toArray();
-=======
         $rooms = Room::paginate(5);
->>>>>>> new
         foreach ($rooms as $key => $value) {
             $image = Image::where('rooms_id', $value['id'])->first();
             $image_array[$key] = $value;
@@ -89,11 +80,7 @@ class HomeController extends Controller
             }])
             ->get()->toArray();
 
-<<<<<<< HEAD
-        return view('detail', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comments'));
-=======
         return view('detail_room', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comments', 'id'));
->>>>>>> new
     }
 
     public function booking($id){

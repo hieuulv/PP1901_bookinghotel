@@ -21,34 +21,18 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/rooms', 'HomeController@rooms')->name('rooms');
-<<<<<<< HEAD
-Route::get('/detail/{id}', 'HomeController@detail_rooms')->name('detail');
+
 Route::get('/rooms/booking/{id}', 'HomeController@booking')->name('booking');
-=======
-<<<<<<< Updated upstream
-Route::get('/detail', 'HomeController@detail_rooms')->name('detail');
-=======
 
 Route::get('/rooms/detail/{id}', 'HomeController@detail_rooms')->name('detail');
 
 Route::post('/comment_notlogin/{id}', 'CommentController@comment_not_logged')->name('comment_notlogin');
 
-Route::get('/rooms/booking/{id}', 'HomeController@booking')->name('booking');
->>>>>>> Stashed changes
->>>>>>> new
-
 Route::get('/post', 'HomeController@post')->name('post');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
-<<<<<<< HEAD
-Route::post('/contact', 'ContactController@contact_admin')->name('contact_admin');
-=======
-<<<<<<< Updated upstream
-=======
 
 Route::post('/contact', 'ContactController@contact_admin')->name('contact_admin');
->>>>>>> Stashed changes
->>>>>>> new
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
