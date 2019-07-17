@@ -154,20 +154,7 @@
             </div>
 
             <div class="blog_navigation text-center">
-                <ul>
-                    <li class="blog_dot active">
-                        <div></div>
-                        01.
-                    </li>
-                    <li class="blog_dot">
-                        <div></div>
-                        02.
-                    </li>
-                    <li class="blog_dot">
-                        <div></div>
-                        03.
-                    </li>
-                </ul>
+                {{ $rooms->links() }}
             </div>
         </div>
     </div>
