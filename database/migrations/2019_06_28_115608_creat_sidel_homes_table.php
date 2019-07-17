@@ -18,7 +18,7 @@ class CreatSidelHomesTable extends Migration
             $table->bigIncrements('id');
             $table->text('title_one')->nullable();
             $table->text('title_two')->nullable();
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

@@ -56,6 +56,16 @@
                                     <option>{{ __('Giường Đôi') }}</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="copacity_room">{{ __('Số người') }}</label>
+                                <input type="text" name="copacity_room" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="facilities_room">{{ __('Tiện nghi') }}</label>
+                                <input type="text" name="facilities_room" class="form-control">
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">

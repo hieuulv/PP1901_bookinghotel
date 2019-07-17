@@ -33,12 +33,11 @@ class HomeController extends Controller
     public function index()
     {
         $comments = Comment::paginate(5);
-        $posts = Post::all();
         $settings = Setting::all()->toArray();
         $homepage = 'index';
         $slide_homes = Slide_home::all();
 
-        return view('index', compact('posts', 'settings', 'comments', 'homepage', 'slide_homes'));
+        return view('index', compact('settings', 'comments', 'homepage', 'slide_homes'));
     }
 
     public function about()
@@ -73,39 +72,50 @@ class HomeController extends Controller
         $rooms = Room::find($id)->toArray();
         $image = Image::where('rooms_id', $rooms['id'])->get()->toArray();
         $image_array['images'] = $image;
+        $comments = Comment::with([
+            'room' => function ($query) {
+                $query->select(['id', 'name']);
+            },
+            'user' => function ($query) {
+                $query->select(['id', 'name', 'email', 'images']);
+            }])
+            ->get()->toArray();
 
-        return view('detail', compact('settings', 'slide_subpages', 'rooms', 'image_array'));
+        return view('detail', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comments'));
+    }
+
+    public function booking($id){
+        $settings = Setting::all()->toArray();
+        $slide_subpages = Slide_subpage::all()->toArray();
+        $image_array = [];
+        $rooms = Room::find($id)->toArray();
+        $image = Image::where('rooms_id', $rooms['id'])->get()->toArray();
+        $image_array['images'] = $image;
+
+        return view('booking', compact('rooms','image_array', 'settings', 'slide_subpages'));
     }
 
     public function post()
     {
-        $posts = Post::all();
         $settings = Setting::all()->toArray();
         $slide_subpages = Slide_subpage::all()->toArray();
 
-        return view('post', compact('posts', 'settings', 'slide_subpages'));
+        return view('post', compact('settings', 'slide_subpages'));
+    }
+
+    public function myroom(){
+        $settings = Setting::all()->toArray();
+        $slide_subpages = Slide_subpage::all()->toArray();
+
+        return view('myroom', compact('settings', 'slide_subpages'));
     }
 
     public function contact()
     {
-        $posts = Post::all();
         $settings = Setting::all()->toArray();
         $slide_subpages = Slide_subpage::all()->toArray();
 
-        return view('contact', compact('posts', 'settings', 'slide_subpages'));
-    }
-
-    public function contact_admin(ContactFormRequest $request)
-    {
-        $contacts = new Contact();
-        $contacts->name = $request->get('name');
-        $contacts->email = $request->get('email');
-        $contacts->phone = $request->get('phone');
-        $contacts->address = $request->get('address');
-        $contacts->content = $request->get('content');
-        $contacts->save();
-
-        return redirect()->route('contact', compact('contacts'));
+        return view('contact', compact( 'settings', 'slide_subpages'));
     }
 
     public function admin()

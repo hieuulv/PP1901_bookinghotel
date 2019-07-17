@@ -38,6 +38,9 @@ class RoomsController extends Controller
         $new_room->price = $request->get('price');
         $new_room->address = $request->get('address');
         $new_room->bed_type = $request->get('bed_type');
+        $new_room->copacity_room = $request->get('copacity_room');
+        $new_room->facilities_room = $request->get('facilities_room');
+
 
         // upload_image
         $images_File = $request->file('images');
@@ -78,6 +81,8 @@ class RoomsController extends Controller
             $new_room->price = $request->get('price');
             $new_room->address = $request->get('address');
             $new_room->bed_type = $request->get('bed_type');
+            $new_room->copacity_room = $request->get('copacity_room');
+            $new_room->facilities_room = $request->get('facilities_room');
 
             // upload_image
             $images_File = $request->file('images');

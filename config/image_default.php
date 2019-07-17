@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'image_df' => 'blog_2.jpg'
+    'image_df' => 'default.jpg'
 ];

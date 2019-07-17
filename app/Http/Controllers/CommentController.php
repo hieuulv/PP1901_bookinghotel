@@ -23,6 +23,19 @@ class CommentController extends Controller
 
     }
 
+    public function contact_admin(Request $request)
+    {
+        $comments = new Comment();
+        $comments->content = $request->get('content');
+
+        if ($comments->save()){
+
+        }
+
+
+        return redirect()->route('detail', compact('comments'));
+    }
+
     public function remove($id)
     {
         $comments = Comment::destroy($id);

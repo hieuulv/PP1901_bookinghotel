@@ -99,19 +99,19 @@
                                             <ul class="lish_detail">
                                                 <li>
                                                     <label class="detail_rooms_lish">
-                                                        {{ __('Loại giường:') }}
+                                                        {{ __('Loại giường:') }} {!! $room['bed_type'] !!}
                                                     </label>
                                                 </li>
 
                                                 <li>
                                                     <label class="detail_rooms_lish">
-                                                        {{ __('Số lượng:') }}
+                                                        {{ __('Số lượng:') }} {!! $room['copacity_room'] !!}
                                                     </label>
                                                 </li>
 
                                                 <li>
                                                     <label class="detail_rooms_lish">
-                                                        {{ __('Tiện nghi:') }}
+                                                        {{ __('Tiện nghi:') }} {!! $room['facilities_room'] !!}
                                                     </label>
                                                 </li>
                                             </ul>
@@ -138,7 +138,7 @@
                                             <div class="offer_reviews">
                                                 <div class="button home_slider_button">
                                                     <div class="button_bcg"></div>
-                                                    <a href="#">{{ __('đặt ngay') }}</a>
+                                                    <a href="{{ route('booking', $room['id']) }}">{{ __('đặt ngay') }}</a>
                                                 </div>
                                             </div>
                                         </div>

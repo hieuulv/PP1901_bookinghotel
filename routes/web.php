@@ -22,13 +22,17 @@ Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/rooms', 'HomeController@rooms')->name('rooms');
 Route::get('/detail/{id}', 'HomeController@detail_rooms')->name('detail');
+Route::get('/rooms/booking/{id}', 'HomeController@booking')->name('booking');
 
 Route::get('/post', 'HomeController@post')->name('post');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::post('/contact', 'HomeController@contact_admin')->name('contact_admin');
+Route::post('/contact', 'ContactController@contact_admin')->name('contact_admin');
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
+
+Route::get('/myroom', 'HomeController@myroom')->name('myroom');
+
 
 
 

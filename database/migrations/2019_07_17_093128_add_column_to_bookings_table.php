@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatSidelSubpagesTable extends Migration
+class AddColumnToBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreatSidelSubpagesTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('slide_subpages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->text('title')->nullable();
-            $table->text('image')->nullable();
-            $table->timestamps();
+        Schema::table('bookings', function (Blueprint $table) {
+            //
+            $table->text('note')->nullable();
         });
     }
 
@@ -29,6 +26,9 @@ class CreatSidelSubpagesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('bookings', function (Blueprint $table) {
+            //
+            $table->dropColumn('note');
+        });
     }
 }
