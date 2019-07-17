@@ -57,6 +57,16 @@
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label for="copacity_room">{{ __('Số người') }}</label>
+                                <input type="text" name="copacity_room" value="{{ $rooms->copacity_room }}" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="facilities_room">{{ __('Tiện nghi') }}</label>
+                                <input type="text" name="facilities_room" value="{{ $rooms->facilities_room }}" class="form-control">
+                            </div>
+
                             <button type="submit" class="btn btn-secondary col-md-4 offset-md-4">
                                 {{__('Update Rooms')}}
                             </button>

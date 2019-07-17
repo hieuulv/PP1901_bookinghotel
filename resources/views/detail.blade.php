@@ -33,7 +33,7 @@
                             </div>
                             <div class="hotel_title_button ml-lg-auto text-lg-right">
                                 <div class="button book_button trans_200">
-                                    <a href="#">{{ __('Đặt ngay') }}</a>
+                                    <a href="{{ route('booking', $rooms['id']) }}">{{ __('Đặt ngay') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -124,19 +124,24 @@
                             <div class="lish_review">
                                 <ul>
                                     <li>
-                                        {{ __('Giá: ') }}<lable class="price">{!! $rooms['price'] !!}</lable> <span>{{ __('/đêm') }}</span>
+                                        {{ __('Giá: ') }}
+                                        <lable class="price"> {!! $rooms['price'] !!}</lable>
+                                        <span>{{ __('/đêm') }}</span>
                                     </li>
 
                                     <li>
-                                        {{ __('Loại giường: ') }}<lable class="bed_type">{!! $rooms['bed_type'] !!}</lable>
+                                        {{ __('Loại giường: ') }}
+                                        <lable class="bed_type"> {!! $rooms['bed_type'] !!}</lable>
                                     </li>
 
                                     <li>
-                                        {{ __('Số lượng: ') }}<label class="capacity">{{ __('2 người lớn') }}</label>
+                                        {{ __('Số lượng: ') }}
+                                        <label class="capacity"> {!! $rooms['copacity_room'] !!}</label>
                                     </li>
 
                                     <li>
-                                        {{ __('Tiện nghi: ') }}<label class="vacilities">{{ __('Bàn là, tivi, máy sấy tóc') }}</label>
+                                        {{ __('Tiện nghi: ') }}
+                                        <label class="vacilities"> {!! $rooms['facilities_room'] !!}</label>
                                     </li>
                                 </ul>
                             </div>
@@ -196,37 +201,52 @@
 
                     <div class="reviews">
                         <div class="reviews_title">{{ __('reviews') }}</div>
+                        @if(Auth::check() && Auth::user()->role == "member")
+                            <p class="name_comment">{{ __('Bạn đang đăng nhập bằng tài khoản') }} <a
+                                        href="{{ route('profile', Auth::user()->id) }}">{{ Auth::user()->name }}</a> {{ __('!!') }}
+                            </p>
+                        @endif
                         <div class="reviews_container">
 
+                        @foreach($comments as $comment)
                             <!-- Review -->
-                            <div class="review">
-                                <div class="row">
-                                    <div class="col-lg-1">
-                                        <div class="review_image">
-                                            <img src="{{ asset('images/review_1.jpg') }}">
+                                <div class="review">
+                                    <div class="row">
+                                        <div class="col-lg-1">
+                                            <div class="review_image">
+                                                <img src="{{ asset('images/review_1.jpg') }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-11">
-                                        <div class="review_content">
-                                            <div class="review_title_container">
-                                                <div class="review_title">{{ __('Le Van hieu') }}</div>
+                                        <div class="col-lg-11">
+                                            <div class="review_content">
+                                                <div class="review_title">{!! $comment['user']['name'] !!}</div>
 
-                                                <div class="review_rating">{{ __('9.5') }}</div>
+                                                <div class="review_text">
+                                                    <p>{!! $comment['content'] !!}</p>
+                                                </div>
+
+                                                <div class="review_name">{!! $comment['user']['email'] !!}</div>
+
+                                                <div class="review_date">{!! $comment['created_at'] !!}</div>
                                             </div>
-                                            <div class="review_text">
-                                                <p>{{ __('phuc vu rat tot') }}</p>
-                                            </div>
-                                            <div class="review_name">{{ __('abcg@gmial.com') }}</div>
-                                            <div class="review_date">{{ __('2019-06-26 16:28:17') }}</div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
 
 
-                            {{--commnet--}}
-                            <section class="commnet">
-                                <form action="#" method="post" class="contact-form row">
+                        </div>
+
+
+                        {{--commnet--}}
+
+                        <section class="commnet">
+                            <form action="#" method="post" class="contact-form row">
+
+
+                                @if(Auth::check() && Auth::user()->role == "member")
+
+                                @else
                                     <div class="form-field col-lg-6">
                                         <input id="name" class="input-text js-input" type="text" required>
                                         <label class="label" for="name">{{ __('Name') }}</label>
@@ -235,22 +255,23 @@
                                         <input id="email" class="input-text js-input" type="email" required>
                                         <label class="label" for="email">{{ __('E-mail') }}</label>
                                     </div>
+                                @endif
 
-                                    <div class="form-field col-lg-12">
-                                        <input id="message" class="input-text js-input" type="text" required>
-                                        <label class="label" for="message">{{ __('Message') }}</label>
-                                    </div>
-                                    <div class="form-field col-lg-12">
-                                        <input class="submit-btn" type="submit" value="Submit">
-                                    </div>
-                                </form>
-                            </section>
-                        </div>
+                                <div class="form-field col-lg-12">
+                                    <input id="message" class="input-text js-input" type="text" required>
+                                    <label class="label" for="message">{{ __('Message') }}</label>
+                                </div>
+                                <div class="form-field col-lg-12">
+                                    <input class="submit-btn" type="submit" value="Submit">
+                                </div>
+                            </form>
+                        </section>
                     </div>
-
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
 
 @endsection
