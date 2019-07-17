@@ -11,7 +11,7 @@
 @else
     <link rel="stylesheet" type="text/css" href="{{ asset('css/contact_styles.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/contact_responsive.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles_rooms.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style_all.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/offers_styles.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/offers_responsive.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/single_listing_styles.css') }} ">
