@@ -27,7 +27,7 @@ class CommentController extends Controller
     public function comment_not_logged(Request $request, $id)
     {
         $comments = new Comment();
-        $comments->name = $request->get('title');
+        $comments->name = $request->get('name');
         $comments->email = $request->get('email');
         $comments->content = $request->get('content');
         $rooms = Room::find($id);
