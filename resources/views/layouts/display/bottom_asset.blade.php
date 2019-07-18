@@ -10,4 +10,4 @@
 <script src="{{ asset('js/product.js') }}"></script>
 <script src="{{ asset('js/application.min.js') }}"></script>
 <script src="{{ asset('js/offers_custom.js') }}"></script>
-
+<script src="{{ asset('js/show_image.js') }}"></script>

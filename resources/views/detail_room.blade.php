@@ -212,23 +212,47 @@
                             <!-- Review -->
                                 <div class="review">
                                     <div class="row">
-                                        <div class="col-lg-1">
-                                            <div class="review_image">
-                                                <img src="{{ asset('images/review_1.jpg') }}">
+                                        @if(Auth::check() && Auth::user()->role == "member")
+                                            <div class="col-lg-1">
+                                                <div class="review_image">
+                                                    <img src="/upload_image/{!! $comment['user']['images'] !!}">
+                                                </div>
                                             </div>
-                                        </div>
+                                        @else
+                                            <div class="col-lg-1">
+                                                <div class="review_image">
+                                                    <img src="{{ asset('upload_image/default.jpg') }}">
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div class="col-lg-11">
-                                            <div class="review_content">
-                                                <div class="review_title">{!! $comment['user']['name'] !!}</div>
+                                            @if(Auth::check() && Auth::user()->role == "member")
+                                                <div class="review_content">
+                                                    <div class="review_title">{!! $comment['user']['name'] !!}</div>
 
-                                                <div class="review_text">
-                                                    <p>{!! $comment['content'] !!}</p>
+                                                    <div class="review_text">
+                                                        <p>{!! $comment['content'] !!}</p>
+                                                    </div>
+
+                                                    <div class="review_name">{!! $comment['user']['email'] !!}</div>
+
+                                                    <div class="review_date">{!! $comment['created_at'] !!}</div>
                                                 </div>
 
-                                                <div class="review_name">{!! $comment['user']['email'] !!}</div>
+                                            @else
+                                                <div class="review_content">
+                                                    <div class="review_title">{!! $comment['name'] !!}</div>
 
-                                                <div class="review_date">{!! $comment['created_at'] !!}</div>
-                                            </div>
+                                                    <div class="review_text">
+                                                        <p>{!! $comment['content'] !!}</p>
+                                                    </div>
+
+                                                    <div class="review_name">{!! $comment['email'] !!}</div>
+
+                                                    <div class="review_date">{!! $comment['created_at'] !!}</div>
+                                                </div>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
@@ -241,30 +265,44 @@
                         {{--commnet--}}
 
                         <section class="commnet">
-                            <form action="#" method="post" class="contact-form row">
+                            @if(Auth::check() && Auth::user()->role == "member")
+                                <form action="#" method="post" class="contact-form row">
+                                    <div class="form-field col-lg-12">
+                                        <input id="message" class="input-text js-input" type="text">
+                                        <label class="label" for="message">{{ __('Message') }}</label>
+                                    </div>
+                                    <div class="form-field col-lg-12">
+                                        <input class="submit-btn" type="submit" value="Submit">
+                                    </div>
+                                </form>
+                            @else
+                                <form action="{{route('comment_notlogin', $id)}}" method="post"
+                                      class="contact-form row">
 
+                                    @csrf
+                                    <input class="input-text js-input" type="hidden" name="room_url"
+                                           value="{{ $id }}">
 
-                                @if(Auth::check() && Auth::user()->role == "member")
-
-                                @else
                                     <div class="form-field col-lg-6">
-                                        <input id="name" class="input-text js-input" type="text" required>
+                                        <input id="name" class="input-text js-input" name="name" type="text">
                                         <label class="label" for="name">{{ __('Name') }}</label>
                                     </div>
+
                                     <div class="form-field col-lg-6 ">
-                                        <input id="email" class="input-text js-input" type="email" required>
+
+                                        <input id="email" class="input-text js-input" name="email" type="text">
                                         <label class="label" for="email">{{ __('E-mail') }}</label>
                                     </div>
-                                @endif
 
-                                <div class="form-field col-lg-12">
-                                    <input id="message" class="input-text js-input" type="text" required>
-                                    <label class="label" for="message">{{ __('Message') }}</label>
-                                </div>
-                                <div class="form-field col-lg-12">
-                                    <input class="submit-btn" type="submit" value="Submit">
-                                </div>
-                            </form>
+                                    <div class="form-field col-lg-12">
+                                        <input id="message" name="content" class="input-text js-input" type="text">
+                                        <label class="label" for="message">{{ __('Message') }}</label>
+                                    </div>
+                                    <div class="form-field col-lg-12">
+                                        <input class="submit-btn" type="submit" value="Submit">
+                                    </div>
+                                </form>
+                            @endif
                         </section>
                     </div>
                 </div>

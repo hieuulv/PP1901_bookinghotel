@@ -1,71 +1,74 @@
-@extends('layouts.app')
+@extends('layouts.home_display')
 
 @section('content')
-    <div class="container">
 
-        <div class="logo_container">
-            <div class="logo">
-                <a href="{{ route('index') }}">
-                    <h1><img src="images/logo.png" alt="">{{ __('Travelix') }}</h1>
-                </a>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-12 text-center">
-                <h4>{{ __('Cập nhật thông tin cá nhân') }}</h4>
-            </div>
+    <div class="home">
+        <img src="/upload_image/myroom.jpg" alt="">
+    </div>
 
-            <div class="col-md-5">
-                <div class="text-center">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                         alt="avatar">
-                    <h6>{{ __('Upload a different photo...') }}</h6>
-                    <input type="file" class="text-center center-block file-upload">
-                    <br>
-                    <hr>
 
-                </div>
-            </div>
+    <div class="site-section">
+        <div class="container bootstrap snippet">
+            <div class="row">
+                <div class="col-sm-3"><!--left col-->
 
-            <div class="col-md-7 personal-info">
-
-                <form class="form-horizontal" method="post" action="">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">{{ __('Họ và tên:') }}</label>
-                        <div class="col-lg-10">
-                            <input class="form-control" type="text" value="{{ $users->name }}">
-                        </div>
+                    <div class="text-center">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                             class="avatar img-circle img-thumbnail"
+                             alt="avatar">
+                        <h6>Upload a different photo...</h6>
+                        <input type="file" class="text-center center-block file-upload">
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">{{ __('Số điện thoại:') }}</label>
-                        <div class="col-lg-10">
-                            <input class="form-control" type="text" value="{{ $users->phone }}">
-                        </div>
+                </div><!--/col-3-->
+                <div class="col-sm-9">
+
+                    <div class="tab-pane" id="settings">
+                        <hr>
+                        <form class="form" action="#" method="post">
+
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label><h4>Họ và Tên</h4></label>
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label><h4>Sinh nhật</h4></label>
+                                    <input type="text" class="form-control" name="birthday">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="phone"><h4>Phone</h4></label>
+                                    <input type="text" class="form-control" name="phone" id="phone"
+                                           placeholder="enter phone" title="enter your phone number if any.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button class="btn btn-lg btn-success pull-right" type="submit"><i
+                                                class="glyphicon glyphicon-ok-sign"></i> Save
+                                    </button>
+                                    <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">{{ __('Email:') }}</label>
-                        <div class="col-lg-10">
-                            <input class="form-control" type="text" value="{{ $users->email }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">{{ __('Địa chỉ:') }}</label>
-                        <div class="col-lg-10">
-                            <input class="form-control" type="text" value="{{ $users->address }}">
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-10">
-                            <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div><!--/tab-content-->
+
+            </div><!--/col-9-->
         </div>
     </div>
+
+
+
 @endsection

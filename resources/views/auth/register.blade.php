@@ -23,7 +23,7 @@
                                     <input type="text"
                                            class="form-control form-control-user @error('name') is-invalid @enderror"
                                            name="name"
-                                           value="{{ old('name') }}" required autocomplete="name" autofocus
+                                           value="{{ old('name') }}" autocomplete="name" autofocus
                                            placeholder="Họ và tên">
 
                                     @error('name')
@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <input type="text"
                                            class="form-control form-control-user @error('phone') is-invalid @enderror"
-                                           name="phone" value="{{ old('phone') }}" required autocomplete="phone"
+                                           name="phone" value="{{ old('phone') }}" autocomplete="phone"
                                            placeholder="{{ __('Số điện thoại') }}">
 
                                     @error('phone')
@@ -47,9 +47,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="email"
+                                    <input type="text"
                                            class="form-control form-control-user @error('email') is-invalid @enderror"
-                                           name="email" value="{{ old('email') }}" required autocomplete="email"
+                                           name="email" value="{{ old('email') }}" autocomplete="email"
                                            placeholder="{{ __('Địa Chỉ Email') }}">
 
                                     @error('email')
@@ -62,7 +62,7 @@
                                 <div class="form-group">
                                     <input type="password"
                                            class="form-control form-control-user @error('password') is-invalid @enderror"
-                                           name="password" required autocomplete="new-password" placeholder="Password">
+                                           name="password" autocomplete="new-password" placeholder="Password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
 
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-user"
-                                           name="password_confirmation" required autocomplete="new-password"
+                                           name="password_confirmation" autocomplete="new-password"
                                            placeholder="{{ __('Nhập Lại Password') }}">
                                 </div>
 

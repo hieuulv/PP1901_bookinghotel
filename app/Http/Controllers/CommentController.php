@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -23,17 +24,18 @@ class CommentController extends Controller
 
     }
 
-    public function contact_admin(Request $request)
+    public function comment_not_logged(Request $request, $id)
     {
         $comments = new Comment();
+        $comments->name = $request->get('name');
+        $comments->email = $request->get('email');
         $comments->content = $request->get('content');
+        $rooms = Room::find($id);
+        $comments->room_url = $request->getHttpHost() . '/rooms/detail/' . $id;
+        $comments->save();
 
-        if ($comments->save()){
 
-        }
-
-
-        return redirect()->route('detail', compact('comments'));
+        return redirect()->route('detail', compact('comments', 'rooms'));
     }
 
     public function remove($id)
