@@ -24,9 +24,13 @@ Route::get('/rooms', 'HomeController@rooms')->name('rooms');
 
 Route::get('/rooms/booking/{id}', 'HomeController@booking')->name('booking');
 
+Route::post('booking_room', 'BookingController@member_booking')->name('member_booking');
+
 Route::get('/rooms/detail/{id}', 'HomeController@detail_rooms')->name('detail');
 
-Route::post('/comment_notlogin/{id}', 'CommentController@comment_not_logged')->name('comment_notlogin');
+Route::post('/comment_notlogin', 'CommentController@comment_not_logged')->name('comment_notlogin');
+
+Route::post('/comment_login', 'CommentController@comment_login')->name('comment_login');
 
 Route::get('/post', 'HomeController@post')->name('post');
 
@@ -83,6 +87,13 @@ Route::get('admin/comment', 'CommentController@index_comment')->name('index_comm
 
 // Remove Comment
 Route::get('admin/comment/remove/{id}', 'CommentController@remove')->name('remove_comment');
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+// Route index booking Admin
+Route::get('admin/booking', 'BookingController@index_booking')->name('index_booking');
+
+
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------

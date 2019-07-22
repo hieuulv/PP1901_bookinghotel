@@ -31,12 +31,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all();
+        $comments = Comment::limit(5)->get()->toArray();
+        $room_one = Room::limit(3)->get()->toArray();
+        $image_array = [];
+        foreach ($room_one as $key => $value) {
+            $image = Image::where('rooms_id', $value['id'])->first();
+            $image_array[$key] = $value;
+            $image_array[$key]['images'] = $image;
+        }
+//        dd($image_array);
         $settings = Setting::all()->toArray();
         $homepage = 'index';
         $slide_homes = Slide_home::all();
 
-        return view('index', compact('settings', 'comments', 'homepage', 'slide_homes'));
+        return view('index', compact('comments','room_one', 'settings', 'homepage', 'slide_homes'));
     }
 
     public function about()
@@ -66,21 +74,15 @@ class HomeController extends Controller
     {
         $settings = Setting::all()->toArray();
         $slide_subpages = Slide_subpage::all()->toArray();
+        $comments = Comment::all()->toArray();
 //        detail rooms
         $image_array = [];
         $rooms = Room::find($id)->toArray();
         $image = Image::where('rooms_id', $rooms['id'])->get()->toArray();
         $image_array['images'] = $image;
-        $comments = Comment::with([
-            'room' => function ($query) {
-                $query->select(['id', 'name']);
-            },
-            'user' => function ($query) {
-                $query->select(['id', 'name', 'email', 'images']);
-            }])
-            ->get()->toArray();
+        $comment = Comment::where('room_id', $rooms['id'])->get()->toArray();
 
-        return view('detail_room', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comments', 'id'));
+        return view('detail_room', compact('settings', 'slide_subpages','rooms', 'image_array', 'comments', 'comment', 'id'));
     }
 
     public function booking($id){

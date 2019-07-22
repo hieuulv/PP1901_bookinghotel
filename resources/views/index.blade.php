@@ -305,8 +305,8 @@
 
                             @foreach($comments as $comment)
                                 <div class="owl-item cta_item text-center" style="width: 1110px; height: 383px; ">
-                                    <div class="cta_title">{!! $comment['user']['email'] !!}</div>
-                                    <p class="cta_text"> {!! $comment->content !!} </p>
+                                    <div class="cta_title">{!! $comment['email'] !!}</div>
+                                    <p class="cta_text"> {!! $comment['content'] !!} </p>
                                     <div class="button cta_button">
                                         <div class="button_bcg"></div>
                                         <a href="#">{{ __('Xem đánh giá') }}<span></span><span></span><span></span></a>
