@@ -15,4 +15,9 @@ class Room extends Model
     {
         return $this->hasMany('App\Models\Comment', 'room_id');
     }
+
+    public function bookings()
+    {
+        return $this->hasMany('App\Models\Booking', 'room_id');
+    }
 }

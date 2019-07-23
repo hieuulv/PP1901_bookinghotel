@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -24,18 +25,40 @@ class CommentController extends Controller
 
     }
 
-    public function comment_not_logged(Request $request, $id)
+    public function comment_not_logged(Request $request)
     {
+        $rooms = Room::find($request->get('room_id'));
+        if (empty($rooms)) {
+            abort(404);
+        }
+        $rooms_id = $rooms['id'];
         $comments = new Comment();
         $comments->name = $request->get('name');
         $comments->email = $request->get('email');
         $comments->content = $request->get('content');
-        $rooms = Room::find($id);
-        $comments->room_url = $request->getHttpHost() . '/rooms/detail/' . $id;
+        $comments->room_id = $rooms['id'];
+        $comments->room_url = $request->getHttpHost() . '/rooms/detail/' . $rooms['id'];
         $comments->save();
 
+        return redirect()->route('detail', compact('rooms_id'));
+    }
 
-        return redirect()->route('detail', compact('comments', 'rooms'));
+    public function comment_login(Request $request)
+    {
+        $rooms = Room::find($request->get('room_id'));
+        if (empty($rooms)) {
+            abort(404);
+        }
+        $rooms_id = $rooms['id'];
+        $comments = new Comment();
+        $comments->content = $request->get('content');
+        $comments->room_id = $rooms['id'];
+        $comments->room_url = $request->getHttpHost() . '/rooms/detail/' . $rooms['id'];
+        $comments->user_id = (Auth::user()->id);
+        $comments->save();
+
+        return redirect()->route('detail', compact('rooms_id'));
+
     }
 
     public function remove($id)

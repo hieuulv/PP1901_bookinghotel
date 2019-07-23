@@ -16,33 +16,33 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3 class="mb-5 title_booking">{{ __('Hình thức đặt phòng') }}</h3>
-                    <form action="#" method="post">
+                    <form action="{{ route('member_booking') }}" method="post">
+                        @csrf
+
+                        <input type="hidden" class="form-control" name="room_id" value="{{ $rooms['id'] }}">
+
                         <div class="row">
                             <div class="col-sm-6 form-group">
-                                <label class="ip_form">Họ và Tên{{ __('') }}</label> <label class="obligatory">{{ __('*') }}</label>
-                                <input type="text" class="form-control">
+                                <label class="ip_form">Họ và Tên{{ __('') }}</label> <label
+                                        class="obligatory">{{ __('*') }}</label>
+                                <input type="text" class="form-control" name="name">
                             </div>
                             <div class="col-sm-6 form-group">
-                                <label class="ip_form">{{ __('Số điện thoại') }}</label> <label class="obligatory">{{ __('*') }}</label>
-                                <input type="text" class="form-control">
+                                <label class="ip_form">{{ __('Số điện thoại') }}</label> <label
+                                        class="obligatory">{{ __('*') }}</label>
+                                <input type="text" class="form-control" name="phone">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 form-group">
-                                <label class="ip_form">{{ __('Check In') }}</label> <label class="obligatory">{{ __('*') }}</label>
-                                <div style="position: relative;">
-                                    <span class="fa fa-calendar icon"
-                                          style="position: absolute; right: 10px; top: 10px;"></span>
-                                    <input type="text" class="form-control" id="arrival_date">
-                                </div>
+                                <label class="ip_form">{{ __('Check In') }}</label> <label
+                                        class="obligatory">{{ __('*') }}</label>
+                                <input type="date" class="form-control" name="check_in">
                             </div>
                             <div class="col-sm-6 form-group">
-                                <label class="ip_form">{{ __('Check Out') }}</label> <label class="obligatory">{{ __('*') }}</label>
-                                <div style="position: relative;">
-                                    <span class="fa fa-calendar icon"
-                                          style="position: absolute; right: 10px; top: 10px;"></span>
-                                    <input type="text" class="form-control" id="departure_date">
-                                </div>
+                                <label class="ip_form">{{ __('Check Out') }}</label> <label
+                                        class="obligatory">{{ __('*') }}</label>
+                                <input type="date" class="form-control" name="check_out">
                             </div>
                         </div>
                         <div class="row">
@@ -63,6 +63,16 @@
                                           rows="3"></textarea>
                             </div>
                         </div>
+                        @if(Auth::check() && Auth::user()->role == "admin")
+                        @elseif(Auth::check() && Auth::user()->role == "member")
+                            <p class="name_comment">{{ __('Bạn đang dùng tài khoản') }} <a
+                                        href="{{ route('profile', Auth::user()->id) }}">{{ Auth::user()->name }}</a> {{ __('để đặt phòng!!') }}
+                            </p>
+                        @else
+                            <p class="name_comment">
+                                {{ __('Vui lòng đăng nhập rồi mới đặt phòng !!') }}
+                            </p>
+                        @endif
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <button type="submit" class="btn btn-primary">{{ __('Đặt Ngay') }}</button>
@@ -77,9 +87,14 @@
                     <h3 class="mb-5 title_booking">{{ __('Phòng đang chọn') }}</h3>
                     <div class="media d-block room mb-0">
                         <figure>
-                            <img src="/images/offer_8.jpg" alt="Generic placeholder image" class="img-fluid">
+                            @foreach( $image_array['images'] as $key => $value )
+                                @if($key == 0)
+                                    <img src="/upload_image/{{ $value['images'] }}" class="img-fluid">
+                                @endif
+                            @endforeach
+
                             <div class="offer_name">
-                                <a href="">{{ __('Home1') }}</a>
+                                <a href="">{{ $rooms['name'] }}</a>
                             </div>
                         </figure>
 
@@ -87,9 +102,11 @@
 
                     <div class="media-body">
                         <ul class="room-specs">
-                            <li class="price_room"><span class="price_room_1">{{ __('Giá phòng:') }}</span>{{ __(' 320.000') }} <span>{{ __('VNĐ') }}</span> </li>
+                            <li class="price_room"><span
+                                        class="price_room_1">{{ __('Giá phòng:') }}</span> {{ $rooms['price'] }}
+                                <span>{{ __('VNĐ') }}</span></li>
                         </ul>
-                        <p class="title_room">{{ __('day la title') }}</p>
+                        <p class="title_room">{{ $rooms['title'] }}</p>
                         <div class="offers_icons">
                             <ul class="offers_icons_list">
                                 <li class="offers_icons_item">
@@ -109,7 +126,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 

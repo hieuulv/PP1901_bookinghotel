@@ -48,6 +48,21 @@
     <hr class="sidebar-divider d-none d-md-block">
     {{-----------------end Rooms-----------------}}
 
+    {{-----------------Booking-----------------}}
+    <div class="sidebar-heading">
+        {{ __('Booking') }}
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('index_booking') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>{{ __('Booking') }}</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+    {{-----------------end Booking-----------------}}
+
     {{-----------------contact-----------------}}
     <div class="sidebar-heading">
         {{ __('Comment') }}

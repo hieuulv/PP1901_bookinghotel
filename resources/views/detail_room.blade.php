@@ -39,7 +39,6 @@
                         </div>
 
                         <!-- Listing Image -->
-
                         <div class="hotel_image">
                             @foreach( $image_array['images'] as $key => $value )
                                 @if($key == 0)
@@ -53,7 +52,6 @@
                         <div class="hotel_gallery">
                             <div class="hotel_slider_container">
                                 <div class="owl-carousel owl-theme hotel_slider">
-                                {{--@dd($image_array['images']);--}}
                                 @foreach( $image_array['images'] as $key => $image_owl)
                                     @if($key != 0)
                                         <!-- Hotel Gallery Slider Item -->
@@ -215,7 +213,7 @@
                                         @if(Auth::check() && Auth::user()->role == "member")
                                             <div class="col-lg-1">
                                                 <div class="review_image">
-                                                    <img src="/upload_image/{!! $comment['user']['images'] !!}">
+                                                    <img src="/upload_image/{{ Auth::user()->images }}">
                                                 </div>
                                             </div>
                                         @else
@@ -228,13 +226,13 @@
                                         <div class="col-lg-11">
                                             @if(Auth::check() && Auth::user()->role == "member")
                                                 <div class="review_content">
-                                                    <div class="review_title">{!! $comment['user']['name'] !!}</div>
+                                                    <div class="review_title">{{ Auth::user()->name }}</div>
 
                                                     <div class="review_text">
                                                         <p>{!! $comment['content'] !!}</p>
                                                     </div>
 
-                                                    <div class="review_name">{!! $comment['user']['email'] !!}</div>
+                                                    <div class="review_name">{{ Auth::user()->email }}</div>
 
                                                     <div class="review_date">{!! $comment['created_at'] !!}</div>
                                                 </div>
@@ -252,7 +250,6 @@
                                                     <div class="review_date">{!! $comment['created_at'] !!}</div>
                                                 </div>
                                             @endif
-
                                         </div>
                                     </div>
                                 </div>
@@ -263,12 +260,16 @@
 
 
                         {{--commnet--}}
-
                         <section class="commnet">
                             @if(Auth::check() && Auth::user()->role == "member")
-                                <form action="#" method="post" class="contact-form row">
+                                <form action="{{ route('comment_login') }}" method="post" class="contact-form row">
+                                    @csrf
+
+                                    <input type="hidden" name="room_id" value="{{ $rooms['id'] }}">
+                                    <input type="hidden" name="room_url" value="{{ $rooms['id'] }}">
+
                                     <div class="form-field col-lg-12">
-                                        <input id="message" class="input-text js-input" type="text">
+                                        <input id="message" class="input-text js-input" type="text" name="content">
                                         <label class="label" for="message">{{ __('Message') }}</label>
                                     </div>
                                     <div class="form-field col-lg-12">
@@ -276,12 +277,11 @@
                                     </div>
                                 </form>
                             @else
-                                <form action="{{route('comment_notlogin', $id)}}" method="post"
-                                      class="contact-form row">
-
+                                <form action="{{route('comment_notlogin')}}" method="post" class="contact-form row">
                                     @csrf
-                                    <input class="input-text js-input" type="hidden" name="room_url"
-                                           value="{{ $id }}">
+
+                                    <input type="hidden" name="room_id" value="{{ $rooms['id'] }}">
+                                    <input type="hidden" name="room_url" value="{{ $rooms['id'] }}">
 
                                     <div class="form-field col-lg-6">
                                         <input id="name" class="input-text js-input" name="name" type="text">
