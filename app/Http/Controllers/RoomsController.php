@@ -29,7 +29,7 @@ class RoomsController extends Controller
         return view('admin.rooms.add');
     }
 
-    public function add(RoomFormRequest $request)
+    public function add(Request $request)
     {
         $new_room = new Room();
 
@@ -68,7 +68,7 @@ class RoomsController extends Controller
         return view('admin.rooms.edit', compact('rooms'));
     }
 
-    public function edit(RoomFormRequest $request, $id)
+    public function edit(Request $request, $id)
     {
         $new_room = Room::find($id);
         if (empty($new_room)) {

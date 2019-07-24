@@ -154,7 +154,7 @@
                                     <div class="offers_image_container">
                                         <div class="offers_image_background">
                                             <img class="img_one"
-                                                 src="/upload_image/{{ $room_one['images']['images'] }}">
+                                                 src="/upload_image/{{ $room_one['images']['images'] }}" style="width: 255px; height: 256px">
                                         </div>
                                         <div class="offer_name">
                                             <a href="{{ route('detail', $room_one['id']) }}">{!! $room_one['name'] !!}</a>
