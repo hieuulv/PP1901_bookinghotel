@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoomFormRequest;
 use App\Models\Image;
 use App\Models\Room;
 use Illuminate\Http\Request;

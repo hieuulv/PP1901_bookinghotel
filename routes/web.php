@@ -40,7 +40,11 @@ Route::post('/contact', 'ContactController@contact_admin')->name('contact_admin'
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile');
 
+Route::post('/update_profile', 'ProfileController@update_profile')->name('update_profile');
+
 Route::get('/myroom', 'HomeController@myroom')->name('myroom');
+
+Route::post('/search', 'HomeController@search')->name('search');
 
 
 

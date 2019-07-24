@@ -115,7 +115,7 @@
                     <div class="logo_container">
                         <div class="logo">
                             <a href="{{ route('index') }}">
-                                <img src="{{ asset('images/logo.png') }}" alt="">
+                                <img src="images/{{ $settings[0]['image_logo'] }}" alt="">
                                 {{ $settings[0]['text_logo'] }}
                             </a>
                         </div>
@@ -200,8 +200,9 @@
 							</svg>
                     </div>
 
-                    <form id="search_form" class="search_form bez_1">
-                        <input type="search" class="search_content_input bez_1">
+                    <form id="search_form" method="post" action="{{ route('search') }}" class="search_form bez_1">
+                        @csrf
+                        <input type="search" keyword class="search_content_input bez_1">
                     </form>
 
                     <div class="hamburger">

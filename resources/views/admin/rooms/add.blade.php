@@ -25,27 +25,52 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name">{{ __('Name Rooms') }}</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="title">{{ __('Title') }}</label>
-                                <textarea class="form-control" rows="1" name="title"></textarea>
+                                <textarea class="form-control @error('title') is-invalid @enderror" rows="1" name="title">{{ old('name') }}</textarea>
+                                @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="rooms_detail">{{ __('Rooms Detail') }}</label>
-                                <textarea class="form-control" rows="5" name="rooms_detail"></textarea>
+                                <textarea class="form-control @error('title') is-invalid @enderror" rows="5" name="rooms_detail">{{ old('rooms_detail') }}</textarea>
+                                @error('rooms_detail')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="price">{{ __('Price') }}</label>
-                                <input type="text" name="price" class="form-control">
+                                <input type="text" name="price" class="form-control @error('name') is-invalid @enderror" value="{{ old('price') }}">
+                                @error('price')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="address">{{ __('Address') }}</label>
-                                <input type="text" name="address" class="form-control">
+                                <input type="text" name="address" class="form-control @error('name') is-invalid @enderror" value="{{ old('address') }}">
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -59,12 +84,22 @@
 
                             <div class="form-group">
                                 <label for="copacity_room">{{ __('Số người') }}</label>
-                                <input type="text" name="copacity_room" class="form-control">
+                                <input type="text" name="copacity_room" class="form-control @error('copacity_room') is-invalid @enderror" value="{{ old('copacity_room') }}">
+                                @error('copacity_room')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="facilities_room">{{ __('Tiện nghi') }}</label>
-                                <input type="text" name="facilities_room" class="form-control">
+                                <input type="text" name="facilities_room" class="form-control @error('facilities_room') is-invalid @enderror" value="{{ old('facilities_room') }}">
+                                @error('facilities_room')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                @enderror
                             </div>
                         </div>
 

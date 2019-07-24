@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryFormRequest extends FormRequest
+class CommentLoginFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,17 +25,15 @@ class CategoryFormRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|unique:categories|min:3'
+            'content' => 'required|max:400'
         ];
     }
 
     public function messages()
     {
         return [
-
-            'name.required' => 'Tên danh mục bắt buộc nhập.',
-            'name.min' => 'Tên danh mục không nhỏ hơn 3 ký tự.',
-            'name.unique' => 'Tên danh mục đã được tạo từ trước.',
+            'content.required' => 'Vui lòng không để trống nội dung.',
+            'content.max' => 'Nội dung không quá 400 từ.',
         ];
     }
 }

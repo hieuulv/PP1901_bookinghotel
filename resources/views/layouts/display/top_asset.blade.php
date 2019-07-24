@@ -8,6 +8,8 @@
 @if(isset($homepage) && $homepage = 'index')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style_all.css') }} ">
+
 @else
     <link rel="stylesheet" type="text/css" href="{{ asset('css/contact_styles.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/contact_responsive.css') }} ">

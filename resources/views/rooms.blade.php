@@ -16,57 +16,6 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-1 temp_col"></div>
-
-                <div class="col-lg-11">
-
-                    <div class="offers_sorting_container">
-                        <ul class="offers_sorting">
-                            <li>
-                                <span class="sorting_text">{{ __('Giá') }}</span>
-                                <i class="fa fa-chevron-down"></i>
-                                <ul>
-                                    <li class="sort_btn">
-                                        <span>{{ __('Hiện thị tất cả') }}</span>
-                                    </li>
-                                    <li class="sort_btn">
-                                        <span>{{ __('Tăng dần') }}</span>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <span class="sorting_text">{{ __('Loại Phòng') }}</span>
-                                <i class="fa fa-chevron-down"></i>
-                                <ul>
-                                    <li class="sort_btn">
-                                        <span>{{ __('Hiện thị tất cả') }}</span>
-                                    </li>
-                                    <li class="sort_btn">
-                                        <span>{{ __('Tăng dần') }}</span>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <span class="sorting_text">{{ __('So nguoi') }}</span>
-                                <i class="fa fa-chevron-down"></i>
-                                <ul>
-                                    <li class="sort_btn">
-                                        <span>{{ __('Hiện thị tất cả') }}</span>
-                                    </li>
-                                    <li class="sort_btn">
-                                        <span>{{ __('Tăng dần') }}</span>
-                                    </li>
-                                </ul>
-                            </li>
-
-
-                            <button>{{ __('Tìm Kiếm') }}</button>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="col-lg-12">
                     <!-- Offers Grid -->
 
