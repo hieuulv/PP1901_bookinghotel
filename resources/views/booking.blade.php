@@ -20,10 +20,11 @@
                         @csrf
 
                         <input type="hidden" class="form-control" name="room_id" value="{{ $rooms['id'] }}">
+                        <input type="hidden" class="form-control" name="status" value="{{ __('Đang chờ xử lý') }}">
 
                         <div class="row">
                             <div class="col-sm-6 form-group">
-                                <label class="ip_form">Họ và Tên{{ __('') }}</label> <label
+                                <label class="ip_form">{{ __('Họ và Tên') }}</label> <label
                                         class="obligatory">{{ __('*') }}</label>
                                 <input type="text" class="form-control" name="name">
                             </div>
@@ -48,11 +49,11 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label class="ip_form">{{ __('Phòng') }}</label>
-                                <input type="text" class="form-control form_readonly" value="Phong 1" readonly>
+                                <input type="text" class="form-control form_readonly" value="{{ $rooms['name'] }}" readonly>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="ip_form">{{ __('Số người') }}</label>
-                                <input type="text" class="form-control form_readonly" value="2 người" readonly>
+                                <input type="text" class="form-control form_readonly" value="{{ $rooms['copacity_room'] }}" readonly>
                             </div>
                         </div>
 
@@ -68,16 +69,18 @@
                             <p class="name_comment">{{ __('Bạn đang dùng tài khoản') }} <a
                                         href="{{ route('profile', Auth::user()->id) }}">{{ Auth::user()->name }}</a> {{ __('để đặt phòng!!') }}
                             </p>
-                        @else
-                            <p class="name_comment">
-                                {{ __('Vui lòng đăng nhập rồi mới đặt phòng !!') }}
-                            </p>
-                        @endif
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <button type="submit" class="btn btn-primary">{{ __('Đặt Ngay') }}</button>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <button type="submit" class="btn btn-primary">{{ __('Đặt Ngay') }}</button>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <p>{{ __('Bạn phải đăng nhập rồi mới đặt phòng.') }}</p>
+                        @endif
+
+
+
                     </form>
                 </div>
 

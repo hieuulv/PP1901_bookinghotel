@@ -17,83 +17,77 @@
             <div class="row">
                 <div class="col">
 
-                    <!-- Contact Form -->
-                    <div class="contact_form_container">
-
-                        <div class="contact_title text-center">{{ __('Liên hệ với chúng tôi') }}</div>
-
-                        <form action="{{ route('contact_admin') }}" id="contact_form" method="post"
-                              class="contact_form">
-                            {{--bat buoc phai co token--}}
+                    <div class="col-md-12 animate-box fadeInUp animated-fast">
+                        <h3>{{ __('Liên hệ với chúng tôi.') }}</h3>
+                        <form action="{{ route('contact_admin') }}" method="post">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                            <div class="row">
 
-
-                                <div class="col-6">
-                                    <input type="text" id="contact_form_name" name="name" placeholder="Name"
-                                           value="{{ old('name') }}"
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="fname">{{ __('Họ và tên') }}</label>
+                                    <input type="text" name="name" value="{{ old('name') }}"
                                            class="form-control @error('name') is-invalid @enderror">
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>&emsp;{{ $message }}</strong>
-                                    </span>
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
 
-                                <div class="col-6">
-                                    <input type="text" id="contact_form_email" name="email" placeholder="E-mail"
-                                           value="{{ old('email') }}"
-                                           class="form-control @error('email') is-invalid @enderror">
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>&emsp;{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-6">
-                                    <input type="text" id="contact_form_name" name="phone" placeholder="Phone"
-                                           value="{{ old('phone') }}"
+                                <div class="col-md-6">
+                                    <label for="lname">{{ __('Số điện thoại') }}</label>
+                                    <input type="text" name="phone" value="{{ old('phone') }}"
                                            class="form-control @error('phone') is-invalid @enderror">
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>&emsp;{{ $message }}</strong>
-                                    </span>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="email">{{ __('Địa chỉ Email') }}</label>
+                                    <input type="text" name="email" value="{{ old('email') }}"
+                                           class="form-control @error('email') is-invalid @enderror">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
 
-                                <div class="col-6">
-                                    <input type="text" id="contact_form_subject" name="address"
-                                           placeholder="Address"
-                                           value="{{ old('address') }}"
+                                <div class="col-md-6">
+                                    <label for="email">{{ __('Địa chỉ') }}</label>
+                                    <input type="text" name="address" value="{{ old('address') }}"
                                            class="form-control @error('address') is-invalid @enderror">
                                     @error('address')
-                                        <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert">
                                             <strong>&emsp;{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-
-                                <div class="col-12">
-                                    <textarea id="contact_form_message"
-                                          class="form-control @error('content') is-invalid @enderror"
-                                          name="content"
-                                          rows="4" placeholder="Message">{{ old('content') }}</textarea>
-                                    @error('content')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>&emsp;{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
                             </div>
-                            <button type="submit" id="form_submit_button" class="form_submit_button button trans_200">
-                                {{ __('send message') }}<span></span><span></span><span></span>
-                            </button>
 
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label for="message">Message</label>
+                                    <textarea name="content" cols="30" rows="10"
+                                              class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
+                                    @error('content')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Send Message" class="btn btn-primary">
+                            </div>
                         </form>
-
                     </div>
+
 
                 </div>
             </div>
@@ -118,8 +112,12 @@
                     <!-- About - Content -->
                     <div class="about_content">
                         <div class="logo_container about_logo">
-                            <div class="logo"><a href="#"><img src="images/logo.png"
-                                                               alt="">{{ $settings[0]['text_logo'] }}</a></div>
+                            <div class="logo">
+                                <a href="{{ route('index') }}">
+                                    <img src="images/{{ $settings[0]['image_logo'] }}" alt="">
+                                    {{ $settings[0]['text_logo'] }}
+                                </a>
+                            </div>
                         </div>
                         <p class="about_text">
                             {{ __('Đến với Travelix của chúng tôi, quý khách sẽ được phục vụ tận tình. Đồng hành cùng chúng tôi bạn, bạn sẽ có những chuyến đi đầy trải nghiệm. Với Travelix, việc đặt chỗ ở, khách sạn, nhà riêng...trở nên nhanh chóng và dễ dàng.') }}

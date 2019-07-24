@@ -8,16 +8,10 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="intro_title text-center">{{ __('Chúng tôi có những phòng tốt nhất') }}</h2>
+                    <h2 class="intro_title text-center">{{ __('Bài viết nổi bật') }}</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="intro_text text-center">
-                        <p>{{ __('Những phòng hạng sang.') }}</p>
-                    </div>
-                </div>
-            </div>
+
             <div class="row intro_items">
 
                 <!-- Rooms hot -->
@@ -29,10 +23,10 @@
                         <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
                             <div class="button intro_button">
                                 <div class="button_bcg"></div>
-                                <a href="#">{{ __('xem thêm') }}<span></span><span></span><span></span></a></div>
+                                <a href="#">{{ __('xem bài viết') }}</a></div>
                             <div class="intro_center text-center">
-                                <h1>Mauritius</h1>
-                                <div class="intro_price">{{ __('Chỉ Từ $1450') }}</div>
+                                <p> {{ __('Phòng tập Club One Fitness & Yoga Center nằm trong khu đô thị sầm uất bậc nhất Royal
+                                    City.') }} </p>
                             </div>
                         </div>
                     </div>
@@ -45,10 +39,10 @@
                         <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
                             <div class="button intro_button">
                                 <div class="button_bcg"></div>
-                                <a href="#">{{ __('xem thêm') }}<span></span><span></span><span></span></a></div>
+                                <a href="#">{{ __('xem bài viết') }}</a></div>
                             <div class="intro_center text-center">
-                                <h1>Mauritius</h1>
-                                <div class="intro_price">{{ __('Chỉ Từ $1450') }}</div>
+                                <p> {{ __('Phòng tập Club One Fitness & Yoga Center nằm trong khu đô thị sầm uất bậc nhất Royal
+                                    City.') }} </p>
                             </div>
                         </div>
                     </div>
@@ -61,10 +55,10 @@
                         <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
                             <div class="button intro_button">
                                 <div class="button_bcg"></div>
-                                <a href="#">{{ __('xem thêm') }}<span></span><span></span><span></span></a></div>
+                                <a href="#">{{ __('xem bài viết') }}</a></div>
                             <div class="intro_center text-center">
-                                <h1>Mauritius</h1>
-                                <div class="intro_price">{{ __('Chỉ Từ $1450') }}</div>
+                                <p> {{ __('Phòng tập Club One Fitness & Yoga Center nằm trong khu đô thị sầm uất bậc nhất Royal
+                                    City.') }} </p>
                             </div>
                         </div>
                     </div>
@@ -151,137 +145,39 @@
             </div>
             <div class="row offers_items">
 
+            @foreach($image_array_one as $room_one)
                 <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <div class="offers_image_background">
-                                        <img src="images/offer_1.jpg" alt="" style="width: 260px; height: 305px">
+                    <div class="col-lg-6 offers_col">
+                        <div class="offers_item">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background">
+                                            <img class="img_one"
+                                                 src="/upload_image/{{ $room_one['images']['images'] }}">
+                                        </div>
+                                        <div class="offer_name">
+                                            <a href="{{ route('detail', $room_one['id']) }}">{!! $room_one['name'] !!}</a>
+                                        </div>
                                     </div>
-                                    <div class="offer_name"><a href="#">{{ __('Lago Home') }}</a></div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">{{ __('$70') }}<span>{{ __('/Đêm') }}</span></div>
-                                    <p class="offers_text">
-                                        {{ __('Đây sẽ là khách sạn cho sự lựa chọn lần sau, tôi cảm thấy rất
-                                        thoải mái khi ở đây.') }}
-                                    </p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
-                                        </ul>
+                                <div class="col-lg-6">
+                                    <div class="offers_content">
+                                        <div class="offers_price">{!! $room_one['price'] !!}
+                                            <span>{{ __('/Đêm') }}</span>
+                                        </div>
+                                        <p class="offers_text">
+                                            {!! $room_one['title'] !!}
+                                        </p>
+                                        <div class="offers_link">
+                                            <a href="{{ route('detail', $room_one['id']) }}">{{ __('Xem thêm') }}</a>
+                                        </div>
                                     </div>
-                                    <div class="offers_link"><a href="offers.html">{{ __('Xem thêm') }}</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <div class="offers_image_background">
-                                        <img src="images/offer_1.jpg" alt="" style="width: 260px; height: 305px">
-                                    </div>
-                                    <div class="offer_name"><a href="#">{{ __('Lago Home') }}</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">$70<span>/Đêm</span></div>
-                                    <p class="offers_text">
-                                        {{ __('Đây sẽ là khách sạn cho sự lựa chọn lần sau, tôi cảm thấy rất
-                                        thoải mái khi ở đây.') }}
-                                    </p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link"><a href="offers.html">{{ __('Xem thêm') }}</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <div class="offers_image_background">
-                                        <img src="images/offer_1.jpg" alt="" style="width: 260px; height: 305px">
-                                    </div>
-                                    <div class="offer_name"><a href="#">{{ __('Lago Home') }}</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">{{ __('$70') }}<span>{{ __('/Đêm') }}</span></div>
-                                    <p class="offers_text">{{ __('Đây sẽ là khách sạn cho sự lựa chọn lần sau, tôi cảm thấy rất
-                                        thoải mái khi ở đây.') }}</p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link"><a href="offers.html">{{ __('Xem thêm') }}</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <div class="offers_image_background">
-                                        <img src="images/offer_1.jpg" alt="" style="width: 260px; height: 305px">
-                                    </div>
-                                    <div class="offer_name"><a href="#">{{ __('Lago Home') }}</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">{{ __('$70') }}<span>{{ __('/Đêm') }}</span></div>
-                                    <p class="offers_text">{{ __('Đây sẽ là khách sạn cho sự lựa chọn lần sau, tôi cảm thấy rất
-                                        thoải mái khi ở đây.') }}</p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link"><a href="offers.html">{{ __('Xem thêm') }}</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
@@ -304,12 +200,13 @@
                         <div class="owl-carousel owl-theme cta_slider">
 
                             @foreach($comments as $comment)
-                                <div class="owl-item cta_item text-center" style="width: 1110px; height: 383px; ">
+                                <div class="owl-item cta_item text-center cment">
                                     <div class="cta_title">{!! $comment['email'] !!}</div>
                                     <p class="cta_text"> {!! $comment['content'] !!} </p>
                                     <div class="button cta_button">
                                         <div class="button_bcg"></div>
-                                        <a href="#">{{ __('Xem đánh giá') }}<span></span><span></span><span></span></a>
+                                        <a href="{!! $comment['room_url'] !!}">{{ __('Xem đánh giá') }}
+                                            <span></span><span></span><span></span></a>
                                     </div>
                                 </div>
                             @endforeach
@@ -375,109 +272,23 @@
             </div>
             <div class="row trending_container">
 
+            @foreach($image_array_two as $room_two)
                 <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="trending_item clearfix">
+                            <div class="trending_image">
+                                <img class="img_two" src="/upload_image/{{ $room_two['images']['images'] }}">
+                            </div>
+                            <div class="trending_content">
+                                <div class="trending_title">
+                                    <a href="{{ route('detail', $room_two['id']) }}">{!! $room_two['name'] !!}</a>
+                                </div>
+                                <div class="trending_price">{{ __('Chỉ từ') }} {!! $room_two['price'] !!} {{ __('VNĐ') }}</div>
+                                <div class="trending_location">{!! $room_two['address'] !!}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="images/trend_1.png"
-                                                         alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">{{ __('grand hotel') }}</a></div>
-                            <div class="trending_price">{{ __('Chỉ từ $182') }}</div>
-                            <div class="trending_location">{{ __('Đà nẵng') }}</div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>

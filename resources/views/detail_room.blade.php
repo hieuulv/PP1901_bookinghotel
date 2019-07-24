@@ -206,7 +206,7 @@
                         @endif
                         <div class="reviews_container">
 
-                        @foreach($comments as $comment)
+                        @foreach($comment_id as $comment)
                             <!-- Review -->
                                 <div class="review">
                                     <div class="row">
@@ -268,11 +268,16 @@
                                     <input type="hidden" name="room_id" value="{{ $rooms['id'] }}">
                                     <input type="hidden" name="room_url" value="{{ $rooms['id'] }}">
 
-                                    <div class="form-field col-lg-12">
-                                        <input id="message" class="input-text js-input" type="text" name="content">
-                                        <label class="label" for="message">{{ __('Message') }}</label>
+                                    <div class="form-group col-lg-12">
+                                        <label for="message">{{ __('Message') }}</label>
+                                        <input id="message" class="form-control @error('content') is-invalid @enderror" type="text" name="content" >
+                                        @error('content')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
-                                    <div class="form-field col-lg-12">
+                                    <div class="form-group col-lg-12">
                                         <input class="submit-btn" type="submit" value="Submit">
                                     </div>
                                 </form>
@@ -283,25 +288,43 @@
                                     <input type="hidden" name="room_id" value="{{ $rooms['id'] }}">
                                     <input type="hidden" name="room_url" value="{{ $rooms['id'] }}">
 
-                                    <div class="form-field col-lg-6">
-                                        <input id="name" class="input-text js-input" name="name" type="text">
-                                        <label class="label" for="name">{{ __('Name') }}</label>
+                                    <div class="form-group col-lg-6">
+                                        <label>{{ __('Name:') }}</label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" name="name">
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
 
-                                    <div class="form-field col-lg-6 ">
-
-                                        <input id="email" class="input-text js-input" name="email" type="text">
-                                        <label class="label" for="email">{{ __('E-mail') }}</label>
+                                    <div class="form-group col-lg-6">
+                                        <label>{{ __('E-mail:') }}</label>
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email">
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
 
-                                    <div class="form-field col-lg-12">
-                                        <input id="message" name="content" class="input-text js-input" type="text">
-                                        <label class="label" for="message">{{ __('Message') }}</label>
+                                    <div class="form-group col-lg-12">
+                                        <label>{{ __('Message:') }}</label>
+                                        <textarea class="form-control @error('content') is-invalid @enderror" rows="5" name="content">{{ old('content') }}</textarea>
+                                        @error('content')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>&emsp;{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
+
                                     <div class="form-field col-lg-12">
                                         <input class="submit-btn" type="submit" value="Submit">
                                     </div>
+
                                 </form>
+
+
                             @endif
                         </section>
                     </div>

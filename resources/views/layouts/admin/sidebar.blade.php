@@ -18,20 +18,20 @@
 
     <hr class="sidebar-divider">
 
-    {{-----------------category-----------------}}
-    <div class="sidebar-heading">
-        {{ __('CATEGORIES') }}
-    </div>
+        {{-----------------category-----------------}}
+        {{--<div class="sidebar-heading">--}}
+            {{--{{ __('CATEGORIES') }}--}}
+        {{--</div>--}}
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('index_category') }}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>{{ __('Categories') }}</span>
-        </a>
-    </li>
+        {{--<li class="nav-item">--}}
+            {{--<a class="nav-link" href="{{ route('index_category') }}">--}}
+                {{--<i class="fas fa-fw fa-table"></i>--}}
+                {{--<span>{{ __('Categories') }}</span>--}}
+            {{--</a>--}}
+        {{--</li>--}}
 
-    <hr class="sidebar-divider d-none d-md-block">
-    {{-----------------end category-----------------}}
+        {{--<hr class="sidebar-divider d-none d-md-block">--}}
+        {{-----------------end category-----------------}}
 
     {{-----------------Rooms-----------------}}
     <div class="sidebar-heading">

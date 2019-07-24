@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoomFormRequest;
 use App\Models\Image;
 use App\Models\Room;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class RoomsController extends Controller
         return view('admin.rooms.add');
     }
 
-    public function add(Request $request)
+    public function add(RoomFormRequest $request)
     {
         $new_room = new Room();
 
@@ -67,7 +68,7 @@ class RoomsController extends Controller
         return view('admin.rooms.edit', compact('rooms'));
     }
 
-    public function edit(Request $request, $id)
+    public function edit(RoomFormRequest $request, $id)
     {
         $new_room = Room::find($id);
         if (empty($new_room)) {

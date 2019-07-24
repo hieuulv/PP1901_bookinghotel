@@ -37,6 +37,7 @@
                                 <td>{!! $comment['created_at'] !!}</td>
                                 <td>
                                     <a href="{{ route('remove_comment', $comment['id'] ) }}"
+                                       onclick="return confirm('{{ __('Bạn có chắc chắc muốn xóa không?.') }}')"
                                        class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>

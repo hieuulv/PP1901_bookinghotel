@@ -20,7 +20,6 @@ class BookingController extends Controller
                 $query->select(['id', 'email']);
             }])
             ->get()->toArray();
-
         return view('admin.booking.index_booking', compact('booking'));
 
     }
@@ -40,6 +39,7 @@ class BookingController extends Controller
         $bookings->note = $request->get('note');
         $bookings->room_id = $request->get('room_id');
         $bookings->user_id = (Auth::user()->id);
+        $bookings->status = $request->get('status');
         $bookings->save();
 
         return redirect()->route('booking', compact( 'rooms_id'));
