@@ -27,7 +27,7 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function add(Request $request)
+    public function add(UserFormRequest $request)
     {
         $users = new User();
         $users->name = $request->get('name');

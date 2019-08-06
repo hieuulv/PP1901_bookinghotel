@@ -202,7 +202,7 @@
 
                     <form id="search_form" method="post" action="{{ route('search') }}" class="search_form bez_1">
                         @csrf
-                        <input type="search" keyword class="search_content_input bez_1">
+                        <input type="search" name="keyword"  class="search_content_input bez_1">
                     </form>
 
                     <div class="hamburger">

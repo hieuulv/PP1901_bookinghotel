@@ -6,6 +6,7 @@
 .idea/
 
 /public/css
+/public/bower_components
 /public/upload_image
 /public/js
 /public/images

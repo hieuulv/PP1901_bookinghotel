@@ -27,15 +27,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">Le van hieu</th>
-                    <td>abc@gmail.com</td>
-                    <td>01678700118</td>
-                    <td>27-06-2019</td>
-                    <td>30-06-2019</td>
+
+                @foreach($bookings as $booking)
+                    <tr>
+                    <th scope="row">{{$booking->name}}</th>
+                    <td>{{Auth::user()->email}}</td>
+                    <td>{{$booking->phone}}</td>
+                    <td>{{$booking->check_in}}</td>
+                    <td>{{$booking->check_out}}</td>
                     <td>
-                        <a href="">
-                            babababab
+                        <a href="{{Route('detail',$booking->room_id)}}">
+                            {{ __('Xem phong') }}
                         </a>
                     </td>
                     <td>
@@ -44,9 +46,10 @@
                         </a>
                     </td>
                     <td>
-                        <button class="btn btn-outline-warning waves-effect">Đang chờ xử lý</button>
+                        <button class="btn btn-outline-warning waves-effect">{{$booking->status}}</button>
                     </td>
                 </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
