@@ -103,7 +103,7 @@
             </div>
 
             <div class="blog_navigation text-center">
-                {{ $rooms->links() }}
+{{--                {{ $rooms->links() }}--}}
             </div>
         </div>
     </div>

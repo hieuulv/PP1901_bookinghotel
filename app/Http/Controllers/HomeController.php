@@ -116,17 +116,9 @@ class HomeController extends Controller
     {
         $settings = Setting::all()->toArray();
         $slide_subpages = Slide_subpage::all()->toArray();
+        $bookings = Booking::where('user_id', '=', Auth::user()->id)->get();
 
-        $bookings = Booking::with([
-            'room' => function ($query) {
-                $query->select(['id', 'name']);
-            },
-            'user' => function ($query) {
-                $query->select(['id', 'email']);
-            }])
-            ->get()->toArray();
-
-        return view('myroom', compact('settings','bookings', 'slide_subpages'));
+        return view('myroom', compact('settings', 'bookings', 'slide_subpages'));
     }
 
     public function contact()
@@ -154,12 +146,9 @@ class HomeController extends Controller
             $image_array[$key]['images'] = $image;
         }
 
-        if (!$request->has('keyword') || empty($request->keyword)) {
-//            return view('rooms');
-        } else {
+
             $kw = $request->keyword;
-            $rooms = Room::where('name', 'like', "%$kw%")->orWhere('price', 'like', "%$kw%")->get();
-        }
+            $rooms = Room::where('name', 'like', "%$kw%")->orWhere('price', 'like', "%$kw%");
 
         return view('rooms', compact('rooms', 'settings', 'slide_subpages', 'image_array'));
     }

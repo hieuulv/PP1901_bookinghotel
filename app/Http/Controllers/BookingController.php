@@ -12,15 +12,9 @@ class BookingController extends Controller
     //
     public function index_booking()
     {
-        $booking = Booking::with([
-            'room' => function ($query) {
-                $query->select(['id', 'name']);
-            },
-            'user' => function ($query) {
-                $query->select(['id', 'email']);
-            }])
-            ->get()->toArray();
-        return view('admin.booking.index_booking', compact('booking'));
+        $bookings = Booking::where('user_id', '=', Auth::user()->id)->get();
+
+        return view('admin.booking.index_booking', compact('bookings'));
 
     }
 
@@ -42,7 +36,7 @@ class BookingController extends Controller
         $bookings->status = $request->get('status');
         $bookings->save();
 
-        return redirect()->route('booking', compact( 'rooms_id'));
+        return redirect()->route('myroom', compact( 'rooms_id'));
     }
 
 
