@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+
 interface BookingHotelRepositoryInterface{
 
     public function comments_lmit();
@@ -23,5 +24,7 @@ interface BookingHotelRepositoryInterface{
     public function imageAll($id);
 
     public function commentId($id);
+
+    public function searchRoom($request);
 
 }

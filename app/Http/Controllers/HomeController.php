@@ -26,8 +26,7 @@ class HomeController extends Controller
 
     public function __construct(BookingHotelRepositoryInterface $bookingHotelRepository)
     {
-        $this->bookingHotelRepository = $bookingHotelRepository;
-//        $this->middleware('auth');
+         $this->bookingHotelRepository = $bookingHotelRepository;
     }
 
     /**
@@ -41,7 +40,7 @@ class HomeController extends Controller
         $image_array_one = $this->bookingHotelRepository->img_one();
         $image_array_two = $this->bookingHotelRepository->img_tow();
         $settings = $this->bookingHotelRepository->settingAll();
-        $homepage = 'index';
+        $homepage = config('config_hottel.homepage');
         $slide_homes = $this->bookingHotelRepository->slide_index();
 
         return view('index', compact('comments', 'image_array_one', 'image_array_two', 'settings', 'homepage', 'slide_homes'));
@@ -72,7 +71,7 @@ class HomeController extends Controller
         $rooms = $this->bookingHotelRepository->roomId($id);
         $image_array = $this->bookingHotelRepository->imageAll($id);
         $comment_id = $this->bookingHotelRepository->commentId($id);
-//dd($image_array);
+
         return view('detail_room', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comment_id'));
     }
 
@@ -120,20 +119,10 @@ class HomeController extends Controller
     {
         $settings = $this->bookingHotelRepository->settingAll();
         $slide_subpages = $this->bookingHotelRepository->slide_subpage();
+        $room_search = $this->bookingHotelRepository->searchRoom($request);
 
-        $image_array = [];
-        $rooms = Room::paginate(5);
-        foreach ($rooms as $key => $value) {
-            $image = Image::where('rooms_id', $value['id'])->first();
-            $image_array[$key] = $value;
-            $image_array[$key]['images'] = $image;
-        }
-
-
-        $kw = $request->keyword;
-        $rooms = Room::where('name', 'like', "%$kw%")->orWhere('price', 'like', "%$kw%");
-
-        return view('rooms', compact('rooms', 'settings', 'slide_subpages', 'image_array'));
+        return view('search', compact('room_search', 'settings', 'slide_subpages'));
     }
 
 }
+

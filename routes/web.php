@@ -44,7 +44,7 @@ Route::post('/update_profile', 'ProfileController@update_profile')->name('update
 
 Route::get('/myroom', 'HomeController@myroom')->name('myroom');
 
-Route::post('/search', 'HomeController@search')->name('search');
+Route::get('/search', 'HomeController@search')->name('search');
 
 
 

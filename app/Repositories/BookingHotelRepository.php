@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\Setting;
 use App\Models\Slide_home;
 use App\Models\Slide_subpage;
+use http\Env\Request;
 
 class BookingHotelRepository implements BookingHotelRepositoryInterface
 {
@@ -103,5 +104,17 @@ class BookingHotelRepository implements BookingHotelRepositoryInterface
         return $comment_id;
     }
 
+    public function searchRoom($request)
+    {
+        // TODO: Implement searchRoom() method.
+        $room_search = [];
+        $rooms =  Room::where('name', 'like', "%$request->key%")->paginate(7);
+        foreach ($rooms as $key => $value) {
+            $image = Image::where('rooms_id', $value['id'])->first();
+            $room_search[$key] = $value;
+            $room_search[$key]['images'] = $image;
+        }
 
+        return $rooms;
+    }
 }
