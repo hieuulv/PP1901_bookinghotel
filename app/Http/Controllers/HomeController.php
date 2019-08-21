@@ -11,6 +11,7 @@ use App\Models\Room;
 use App\Models\Setting;
 use App\Models\Slide_home;
 use App\Models\Slide_subpage;
+use App\Repositories\BookingHotelRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +22,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected $bookingHotelRepository;
+
+    public function __construct(BookingHotelRepositoryInterface $bookingHotelRepository)
     {
-//        $this->middleware('auth');
+         $this->bookingHotelRepository = $bookingHotelRepository;
     }
 
     /**
@@ -33,31 +36,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $comments = Comment::limit(5)->get()->toArray();
-        $image_array_one = [];
-        $room_one = Room::limit(4)->orderBy('id', 'desc')->get()->toArray();
-        foreach ($room_one as $key => $value) {
-            $image = Image::where('rooms_id', $value['id'])->first();
-            $image_array_one[$key] = $value;
-            $image_array_one[$key]['images'] = $image;
-        }
-        $image_array_two = [];
-        $room_two = Room::limit(8)->orderBy('id', 'asc')->get()->toArray();
-        foreach ($room_two as $key => $value) {
-            $image = Image::where('rooms_id', $value['id'])->first();
-            $image_array_two[$key] = $value;
-            $image_array_two[$key]['images'] = $image;
-        }
-        $settings = Setting::all()->toArray();
-        $homepage = 'index';
-        $slide_homes = Slide_home::all();
+        $comments = $this->bookingHotelRepository->comments_lmit();
+        $image_array_one = $this->bookingHotelRepository->img_one();
+        $image_array_two = $this->bookingHotelRepository->img_tow();
+        $settings = $this->bookingHotelRepository->settingAll();
+        $homepage = config('config_hottel.homepage');
+        $slide_homes = $this->bookingHotelRepository->slide_index();
 
-        return view('index', compact('comments', 'image_array_one', 'image_array_two', 'room_one', 'settings', 'homepage', 'slide_homes'));
+        return view('index', compact('comments', 'image_array_one', 'image_array_two', 'settings', 'homepage', 'slide_homes'));
     }
 
     public function about()
     {
-        $settings = Setting::all()->toArray();
+        $settings = $this->bookingHotelRepository->settingAll();
         $slide_subpages = Slide_subpage::all()->toArray();
 
         return view('about', compact('settings', 'slide_subpages'));
@@ -65,57 +56,47 @@ class HomeController extends Controller
 
     public function rooms()
     {
-        $settings = Setting::all()->toArray();
-        $slide_subpages = Slide_subpage::all()->toArray();
-        $image_array = [];
-        $rooms = Room::paginate(5);
-        foreach ($rooms as $key => $value) {
-            $image = Image::where('rooms_id', $value['id'])->first();
-            $image_array[$key] = $value;
-            $image_array[$key]['images'] = $image;
-        }
+        $settings = $this->bookingHotelRepository->settingAll();
+        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
+        $image_array = $this->bookingHotelRepository->image_first();
 
-        return view('rooms', compact('settings', 'slide_subpages', 'rooms', 'image_array'));
+        return view('rooms', compact('settings', 'slide_subpages', 'image_array'));
     }
 
     public function detail_rooms($id)
     {
-        $settings = Setting::all()->toArray();
-        $slide_subpages = Slide_subpage::all()->toArray();
+        $settings = $this->bookingHotelRepository->settingAll();
+        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
 //        detail rooms
-        $image_array = [];
-        $rooms = Room::find($id)->toArray();
-        $image = Image::where('rooms_id', $rooms['id'])->get()->toArray();
-        $image_array['images'] = $image;
-        $comment_id = Comment::where('room_id', $rooms['id'])->get()->toArray();
+        $rooms = $this->bookingHotelRepository->roomId($id);
+        $image_array = $this->bookingHotelRepository->imageAll($id);
+        $comment_id = $this->bookingHotelRepository->commentId($id);
 
-        return view('detail_room', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comment_id', 'id'));
+        return view('detail_room', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comment_id'));
     }
 
     public function booking($id)
     {
-        $settings = Setting::all()->toArray();
-        $slide_subpages = Slide_subpage::all()->toArray();
-        $image_array = [];
-        $rooms = Room::find($id)->toArray();
-        $image = Image::where('rooms_id', $rooms['id'])->get()->toArray();
-        $image_array['images'] = $image;
+        $settings = $this->bookingHotelRepository->settingAll();
+        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
+        $rooms = $this->bookingHotelRepository->roomId($id);
+        $image_array = $this->bookingHotelRepository->imageAll($id);
 
         return view('booking', compact('rooms', 'image_array', 'settings', 'slide_subpages'));
     }
 
     public function post()
     {
-        $settings = Setting::all()->toArray();
-        $slide_subpages = Slide_subpage::all()->toArray();
+        $settings = $this->bookingHotelRepository->settingAll();
+        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
 
         return view('post', compact('settings', 'slide_subpages'));
     }
 
     public function myroom()
     {
-        $settings = Setting::all()->toArray();
-        $slide_subpages = Slide_subpage::all()->toArray();
+        $settings = $this->bookingHotelRepository->settingAll();
+        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
         $bookings = Booking::where('user_id', '=', Auth::user()->id)->get();
 
         return view('myroom', compact('settings', 'bookings', 'slide_subpages'));
@@ -123,8 +104,8 @@ class HomeController extends Controller
 
     public function contact()
     {
-        $settings = Setting::all()->toArray();
-        $slide_subpages = Slide_subpage::all()->toArray();
+        $settings = $this->bookingHotelRepository->settingAll();
+        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
 
         return view('contact', compact('settings', 'slide_subpages'));
     }
@@ -136,21 +117,12 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $settings = Setting::all()->toArray();
-        $slide_subpages = Slide_subpage::all()->toArray();
-        $image_array = [];
-        $rooms = Room::paginate(5);
-        foreach ($rooms as $key => $value) {
-            $image = Image::where('rooms_id', $value['id'])->first();
-            $image_array[$key] = $value;
-            $image_array[$key]['images'] = $image;
-        }
+        $settings = $this->bookingHotelRepository->settingAll();
+        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
+        $room_search = $this->bookingHotelRepository->searchRoom($request);
 
-
-            $kw = $request->keyword;
-            $rooms = Room::where('name', 'like', "%$kw%")->orWhere('price', 'like', "%$kw%");
-
-        return view('rooms', compact('rooms', 'settings', 'slide_subpages', 'image_array'));
+        return view('search', compact('room_search', 'settings', 'slide_subpages'));
     }
 
 }
+
