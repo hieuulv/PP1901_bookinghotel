@@ -21,7 +21,7 @@ class BookingController extends Controller
     public function member_booking(Request $request)
     {
         $rooms = Room::find($request->get('room_id'));
-        if (empty($rooms)){
+        if (empty($rooms)) {
             abort(404);
         }
         $rooms_id = $rooms['id'];
@@ -36,8 +36,15 @@ class BookingController extends Controller
         $bookings->status = $request->get('status');
         $bookings->save();
 
-        return redirect()->route('myroom', compact( 'rooms_id'));
+        return redirect()->route('myroom', compact('rooms_id'));
     }
 
+    public function status_booking($id)
+    {
+        $status_bookings = Booking::find($id);
 
+//        dd($status_bookings);
+
+        return view('admin.booking.status_booking', compact('status_bookings'));
+    }
 }
