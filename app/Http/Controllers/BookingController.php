@@ -43,8 +43,16 @@ class BookingController extends Controller
     {
         $status_bookings = Booking::find($id);
 
-//        dd($status_bookings);
-
         return view('admin.booking.status_booking', compact('status_bookings'));
+    }
+
+    public function status_booking_save(Request $request, $id)
+    {
+        $status_bookings = Booking::find($id);
+        $status_bookings->status = $request->status;
+        $status_bookings->save();
+
+        return redirect()->route('index_booking', compact('status_bookings'));
+//        return view('admin.booking.status_booking', compact('status_bookings'));
     }
 }

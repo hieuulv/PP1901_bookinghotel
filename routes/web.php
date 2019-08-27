@@ -98,6 +98,7 @@ Route::get('admin/comment/remove/{id}', 'CommentController@remove')->name('remov
 Route::get('admin/booking', 'BookingController@index_booking')->name('index_booking');
 // Route status booking
 Route::get('admin/booking/status/{id}', 'BookingController@status_booking')->name('status_booking');
+Route::post('admin/booking/status/{id}', 'BookingController@status_booking_save')->name('status_booking_save');
 
 
 //----------------------------------------------------------------------------------------------
