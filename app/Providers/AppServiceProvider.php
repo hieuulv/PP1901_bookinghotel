@@ -16,8 +16,13 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->singleton(
-          \App\Repositories\BookingHotelRepositoryInterface::class,
-          \App\Repositories\BookingHotelRepository::class
+            \App\Repositories\HomeBookingHotelRepositoryInterface::class,
+            \App\Repositories\HomeBookingHotelRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\BookingRoomRepositoryInterface::class,
+            \App\Repositories\BookingRoomRepository::class
         );
     }
 

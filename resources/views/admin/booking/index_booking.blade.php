@@ -16,6 +16,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
+                            <th scope="col">{{ __('Id')}}</th>
                             <th scope="col">{{ __('Họ tên')}}</th>
                             <th scope="col">{{ __('Email')}}</th>
                             <th scope="col">{{ __('Số điện thoại')}}</th>
@@ -31,6 +32,7 @@
 
                         @foreach($bookings as $booking)
                             <tr>
+                                <th scope="row">{{$booking->id}}</th>
                                 <th scope="row">{{$booking->name}}</th>
                                 <td>{{Auth::user()->email}}</td>
                                 <td>{{$booking->phone}}</td>
@@ -38,12 +40,24 @@
                                 <td>{{$booking->check_out}}</td>
                                 <td>
                                     <a href="{{Route('detail', $booking->room_id)}}">
-                                        {{ __('Xem phong') }}
+                                        {{ __('Xem Phòng') }}
                                     </a>
                                 </td>
 
                                 <td>
-                                    <button class="btn btn-outline-warning waves-effect">{{$booking->status}}</button>
+                                    @if($booking->status == 1)
+                                        <button class="btn btn-outline-warning waves-effect">
+                                            {{ __('Đang chờ xử lý') }}
+                                        </button>
+                                    @elseif($booking->status == 2)
+                                        <button class="btn btn-outline-success waves-effect">
+                                            {{ __('Đặt phòng thành công') }}
+                                        </button>
+                                    @else
+                                        <button class="btn btn-outline-danger waves-effect">
+                                            {{ __('Phòng đặt đã bị hủy') }}
+                                        </button>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('status_booking', $booking->id) }}"

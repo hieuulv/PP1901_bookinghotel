@@ -12,14 +12,42 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="row justify-content-center">
-                    <div class="col-6 ">
-                        <form action="">
-                            <input type="radio" name="status" value="Đang chờ xử lý"> <button class="btn btn-outline-warning waves-effect">{{ $status_bookings->status }}</button> <br>
-                            <input type="radio" name="status" value="Đã đặt thành công"> {{ __('Đã đặt thành công') }}<br>
-                            <input type="radio" name="status" value="Hủy đặt phòng"> {{ __('Hủy đặt phòng') }}
-                        </form>
+                    <form action="{{ route('status_booking_save', $status_bookings->id) }}" method="post">
+                        @csrf
 
-                    </div>
+                        <div>
+
+                            {{--@dd($status_bookings->status)--}}
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" @if($status_bookings->status == 1) checked
+                                       @endif class="custom-control-input" id="defaultInline1"
+                                       name="status" value="1" mdbInput>
+                                <label class="custom-control-label"
+                                       for="defaultInline1">{{ __('Đang chờ xử lý') }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" @if($status_bookings->status == 2) checked
+                                       @endif class="custom-control-input" id="defaultInline2"
+                                       name="status" value="2" mdbInput>
+                                <label class="custom-control-label"
+                                       for="defaultInline2">{{ __('Đã đặt thành công') }}</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" @if($status_bookings->status == 3) checked
+                                       @endif class="custom-control-input" id="defaultInline3"
+                                       name="status" value="3" mdbInput>
+                                <label class="custom-control-label"
+                                       for="defaultInline3">{{ __('Hủy đặt phòng') }}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">{{ __('Save Status') }}</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>

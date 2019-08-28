@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use App\Models\Room;
+use App\Repositories\BookingRoomRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
-    //
+
+    protected $bookingroomRepository;
+
+    public function __construct(BookingRoomRepositoryInterface $bookingroomRepository)
+    {
+        $this->bookingroomRepository = $bookingroomRepository;
+    }
+
+
     public function index_booking()
     {
-        $bookings = Booking::where('user_id', '=', Auth::user()->id)->get();
+        $bookings = $this->bookingroomRepository->booking_user();
 
         return view('admin.booking.index_booking', compact('bookings'));
 
@@ -20,7 +28,7 @@ class BookingController extends Controller
 
     public function member_booking(Request $request)
     {
-        $rooms = Room::find($request->get('room_id'));
+        $rooms = $this->bookingroomRepository->room_id($request);
         if (empty($rooms)) {
             abort(404);
         }
@@ -41,10 +49,26 @@ class BookingController extends Controller
 
     public function status_booking($id)
     {
-        $status_bookings = Booking::find($id);
+        $status_bookings = $this->bookingroomRepository->booking_status($id);
+        if ($status_bookings) {
+            return view('admin.booking.status_booking', compact('status_bookings'));
+        }
 
-//        dd($status_bookings);
+        abort(404);
 
-        return view('admin.booking.status_booking', compact('status_bookings'));
+    }
+
+    public function status_booking_save(Request $request, $id)
+    {
+        $status_bookings = $this->bookingroomRepository->booking_status($id);
+        if ($status_bookings){
+            $status_bookings->status = $request->status;
+            $status_bookings->save();
+
+            return redirect()->route('index_booking', compact('status_bookings'));
+        }
+
+        abort(404);
+
     }
 }
