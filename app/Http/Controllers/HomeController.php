@@ -3,15 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use App\Models\Comment;
-use App\Models\Contact;
-use App\Models\Image;
-use App\Models\Post;
-use App\Models\Room;
-use App\Models\Setting;
-use App\Models\Slide_home;
 use App\Models\Slide_subpage;
-use App\Repositories\BookingHotelRepositoryInterface;
+use App\Repositories\HomeBookingHotelRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,11 +15,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    protected $bookingHotelRepository;
+    protected $homebookingHotelRepository;
 
-    public function __construct(BookingHotelRepositoryInterface $bookingHotelRepository)
+    public function __construct(HomeBookingHotelRepositoryInterface $homebookingHotelRepository)
     {
-         $this->bookingHotelRepository = $bookingHotelRepository;
+         $this->homebookingHotelRepository = $homebookingHotelRepository;
     }
 
     /**
@@ -36,76 +29,76 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $comments = $this->bookingHotelRepository->comments_lmit();
-        $image_array_one = $this->bookingHotelRepository->img_one();
-        $image_array_two = $this->bookingHotelRepository->img_tow();
-        $settings = $this->bookingHotelRepository->settingAll();
+        $comments = $this->homebookingHotelRepository->comments_lmit();
+        $image_array_one = $this->homebookingHotelRepository->img_one();
+        $image_array_two = $this->homebookingHotelRepository->img_tow();
+        $settings = $this->homebookingHotelRepository->settingAll();
         $homepage = config('config_hottel.homepage');
-        $slide_homes = $this->bookingHotelRepository->slide_index();
+        $slide_homes = $this->homebookingHotelRepository->slide_index();
 
         return view('index', compact('comments', 'image_array_one', 'image_array_two', 'settings', 'homepage', 'slide_homes'));
     }
 
     public function about()
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = Slide_subpage::all()->toArray();
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
 
         return view('about', compact('settings', 'slide_subpages'));
     }
 
     public function rooms()
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
-        $image_array = $this->bookingHotelRepository->image_first();
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
+        $image_array = $this->homebookingHotelRepository->image_first();
 
         return view('rooms', compact('settings', 'slide_subpages', 'image_array'));
     }
 
     public function detail_rooms($id)
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
 //        detail rooms
-        $rooms = $this->bookingHotelRepository->roomId($id);
-        $image_array = $this->bookingHotelRepository->imageAll($id);
-        $comment_id = $this->bookingHotelRepository->commentId($id);
+        $rooms = $this->homebookingHotelRepository->roomId($id);
+        $image_array = $this->homebookingHotelRepository->imageAll($id);
+        $comment_id = $this->homebookingHotelRepository->commentId($id);
 
         return view('detail_room', compact('settings', 'slide_subpages', 'rooms', 'image_array', 'comment_id'));
     }
 
     public function booking($id)
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
-        $rooms = $this->bookingHotelRepository->roomId($id);
-        $image_array = $this->bookingHotelRepository->imageAll($id);
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
+        $rooms = $this->homebookingHotelRepository->roomId($id);
+        $image_array = $this->homebookingHotelRepository->imageAll($id);
 
         return view('booking', compact('rooms', 'image_array', 'settings', 'slide_subpages'));
     }
 
     public function post()
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
 
         return view('post', compact('settings', 'slide_subpages'));
     }
 
     public function myroom()
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
-        $bookings = Booking::where('user_id', '=', Auth::user()->id)->get();
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
+        $bookings = $this->homebookingHotelRepository->user_id();
 
         return view('myroom', compact('settings', 'bookings', 'slide_subpages'));
     }
 
     public function contact()
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
 
         return view('contact', compact('settings', 'slide_subpages'));
     }
@@ -117,9 +110,9 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $settings = $this->bookingHotelRepository->settingAll();
-        $slide_subpages = $this->bookingHotelRepository->slide_subpage();
-        $room_search = $this->bookingHotelRepository->searchRoom($request);
+        $settings = $this->homebookingHotelRepository->settingAll();
+        $slide_subpages = $this->homebookingHotelRepository->slide_subpage();
+        $room_search = $this->homebookingHotelRepository->searchRoom($request);
 
         return view('search', compact('room_search', 'settings', 'slide_subpages'));
     }

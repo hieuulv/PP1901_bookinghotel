@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Booking;
 use App\Models\Comment;
 use App\Models\Image;
 use App\Models\Room;
@@ -9,8 +10,9 @@ use App\Models\Setting;
 use App\Models\Slide_home;
 use App\Models\Slide_subpage;
 use http\Env\Request;
+use Illuminate\Support\Facades\Auth;
 
-class BookingHotelRepository implements BookingHotelRepositoryInterface
+class HomeBookingHotelRepository implements HomeBookingHotelRepositoryInterface
 {
     public function comments_lmit()
     {
@@ -82,6 +84,13 @@ class BookingHotelRepository implements BookingHotelRepositoryInterface
     {
         // TODO: Implement roomId() method.
         return Room::findOrFail($id);
+    }
+
+    public function user_id()
+    {
+        // TODO: Implement user_id() method.
+
+        return Booking::where('user_id', '=', Auth::user()->id)->get();
     }
 
     public function imageAll($id)
